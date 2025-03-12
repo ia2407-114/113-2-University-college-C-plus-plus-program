@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+// 定義學生結構
+typedef struct student {
+    char name[20];
+    int ID;
+    int math, comput;
+    float AVG;
+} stu;
+
+int main(void)
+{
+    FILE* cfPtr; // students.dat 檔案指標
+
+    // fopen 以二進位寫入模式開啟檔案，若無法開啟則顯示錯誤訊息
+    if ((cfPtr = fopen_s("students.dat", "wb")) == NULL) {
+        puts("檔案無法開啟。");
+    }
+    else {
+        // 建立預設的空白學生資料
+        stu blankStudent = { "", 0, 0, 0, 0.0 };
+
+        // 輸出 100 筆空白學生資料到檔案中
+        for (unsigned int i = 1; i <= 100; ++i) {
+            fwrite(&blankStudent, sizeof(stu), 1, cfPtr);
+        }
+
+        fclose(cfPtr); // 關閉檔案
+        puts("100 筆空白學生資料已建立。");
+    }
+}
