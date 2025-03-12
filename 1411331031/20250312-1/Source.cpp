@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+int volume(int);
+double volume(int, int);
+int volume(int,int,int);
+int a = 0;
+int b = 0;
+int c = 0;
+int main()
+{
+
+    cout << "請輸入1個整數，計算正方體體積:" << endl;
+    cin >> a;
+    cout << volume(a) << endl;
+    cout << "請輸入2個整數，計算圓柱體體積:" << endl;
+    cin >> a >> b;
+    cout << volume(a,b) << endl;
+    cout << "請輸入3個整數，計算長方體體積:" << endl;
+    cin >> a >> b >> c;
+    cout << volume(a,b,c) << endl;
+}
+int volume(int a)
+{
+    return a*a*a;
+}
+double volume(int a,int b)
+{
+    return a * a * 3.14159 * b;
+}
+int volume(int a,int b,int c)
+{
+    return a * b * c;
+}
