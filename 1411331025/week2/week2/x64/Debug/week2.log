@@ -1,0 +1,3 @@
+﻿  week2.cpp
+C:\Users\劉丞渝\Desktop\程式設計\week2\week2.cpp(45,74): warning C4244: '=': 將 'int' 轉換為 'float'，由於類型不同，可能導致資料遺失
+  week2.vcxproj -> C:\Users\劉丞渝\Desktop\程式設計\week2\x64\Debug\week2.exe

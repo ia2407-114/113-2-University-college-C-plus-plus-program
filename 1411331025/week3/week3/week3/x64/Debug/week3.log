@@ -1,0 +1,6 @@
+﻿  week3.cpp
+C:\Users\劉丞渝\Desktop\程式設計\week3\week3\week3.cpp(29,17): warning C4477: 'scanf_s' : 格式字串 '%s' 需要 'unsigned int' 類型的引數，但 variadic 引數 2 的類型為 'size_t'
+      C:\Users\劉丞渝\Desktop\程式設計\week3\week3\week3.cpp(29,17):
+      此引數可用為緩衝區大小
+  
+  week3.vcxproj -> C:\Users\劉丞渝\Desktop\程式設計\week3\week3\x64\Debug\week3.exe
