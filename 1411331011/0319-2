@@ -1,0 +1,60 @@
+#include <iostream>
+using namespace std;
+
+// GradeBook class definition
+class GradeBook
+{
+private:
+    int grade; // 私有成員變數 grade
+
+public:
+    // 建構函數，初始化成績
+    GradeBook(int initialGrade)
+    {
+        if (initialGrade >= 0 && initialGrade <= 99)
+            grade = initialGrade;
+        else
+        {
+            cout << "Invalid grade! Setting default grade to 0." << endl;
+            grade = 0;
+        }
+    }
+
+    // function that displays a welcome message to the GradeBook user
+    void displayMessage() const
+    {
+        cout << "Welcome to the Grade Book!" << endl;
+    }
+
+    // 印出目前的成績
+    void printGrade() const
+    {
+        cout << "目前成績: " << grade << endl;
+    }
+
+    // 修改成績（需在 0~99 之間）
+    void changeGrade(int newGrade)
+    {
+        if (newGrade >= 0 && newGrade <= 99)
+            grade = newGrade;
+        else
+            cout << "Invalid grade! Grade must be between 0 and 99." << endl;
+    }
+};
+
+// function main begins program execution
+int main()
+{
+    int newGrade;
+    GradeBook myGradeBook(85); // 創建一個 GradeBook 物件並初始化成績
+    myGradeBook.displayMessage(); // 呼叫 displayMessage()
+
+    myGradeBook.printGrade(); // 印出目前成績
+
+    cout << "輸入新的成績 (0-99): ";
+    cin >> newGrade; // 從鍵盤輸入新的成績
+
+    myGradeBook.changeGrade(newGrade); // 嘗試修改成績
+
+    myGradeBook.printGrade(); // 印出修改後的成績
+}
