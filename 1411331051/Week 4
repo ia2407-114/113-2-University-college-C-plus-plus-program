@@ -1,0 +1,45 @@
+#include <iostream>
+using namespace std;
+
+// Function prototypes
+int volume(int);                  // Cube volume (1 integer)
+double volume(int, int);           // Cylinder volume (2 integers)
+int volume(int, int, int);         // Rectangular prism volume (3 integers)
+
+int main() {
+    int a, b, c;
+
+    
+    cout << "Please enter one integer (side length of the cube): " << endl;
+    cin >> a;
+    cout << "Cube volume: " << volume(a) << endl;  // Call volume(int)
+
+   
+    cout << "Please enter two integers (radius, height of the cylinder): " << endl;
+    cin >> a >> b;
+    cout << "Cylinder volume: " << volume(a, b) << endl;  // Call volume(int, int)
+
+ 
+    cout << "Please enter three integers (length, width, height of the rectangular prism): " << endl;
+    cin >> a >> b >> c;
+    cout << "Rectangular prism volume: " << volume(a, b, c) << endl;  // Call volume(int, int, int)
+
+    cout << "Finished!" << endl;
+
+    return 0;
+}
+
+
+int volume(int a) {
+    return a * a * a;
+}
+
+
+double volume(int a, int b) {
+    return a * a * 3.14159 * b;
+}
+
+
+int volume(int a, int b, int c) {
+    return a * b * c;
+}

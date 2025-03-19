@@ -1,0 +1,115 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct student {
+    int ID;                 
+    char name[50];          
+    float score;            
+    struct student* nextPtr; 
+};
+
+typedef struct student Student;
+typedef Student* StudentPtr;
+
+
+void insert(StudentPtr* sPtr, int ID, char name[], float score);
+int isEmpty(StudentPtr sPtr);
+void printList(StudentPtr currentPtr);
+void copyString(char dest[], char src[]); 
+
+int main(void) {
+    StudentPtr startPtr = NULL; 
+    int ID;
+    char name[50];
+    float score;
+
+   
+    for (int i = 0; i < 4; i++) {
+        printf("Enter Student ID, Name, and Score: ");
+
+        // Use scanf_s for safer input handling
+        if (scanf_s("%d", &ID) != 1) {
+            printf("Invalid input for ID. Exiting.\n");
+            return 1;
+        }
+        if (scanf_s("%49s", name, (unsigned int)sizeof(name)) != 1) { // Prevent buffer overflow
+            printf("Invalid input for Name. Exiting.\n");
+            return 1;
+        }
+        if (scanf_s("%f", &score) != 1) {
+            printf("Invalid input for Score. Exiting.\n");
+            return 1;
+        }
+
+        insert(&startPtr, ID, name, score);
+    }
+
+    
+    printList(startPtr);
+    return 0;
+}
+
+
+void insert(StudentPtr* sPtr, int ID, char name[], float score) {
+    StudentPtr newPtr = (StudentPtr)malloc(sizeof(Student)); 
+
+    if (newPtr != NULL) {
+        newPtr->ID = ID;
+        copyString(newPtr->name, name); 
+        newPtr->score = score;
+        newPtr->nextPtr = NULL;
+
+        StudentPtr previousPtr = NULL;
+        StudentPtr currentPtr = *sPtr;
+
+        
+        while (currentPtr != NULL && ID > currentPtr->ID) {
+            previousPtr = currentPtr;
+            currentPtr = currentPtr->nextPtr;
+        }
+
+       
+        if (previousPtr == NULL) {
+            newPtr->nextPtr = *sPtr;
+            *sPtr = newPtr;
+        }
+        else { 
+            previousPtr->nextPtr = newPtr;
+            newPtr->nextPtr = currentPtr;
+        }
+    }
+    else {
+        printf("Memory allocation failed. Student not inserted.\n");
+    }
+}
+
+
+
+void copyString(char dest[], char src[]) {
+    int i = 0;
+    while (src[i] != '\0' && i < 49) { // Limit copy to avoid overflow
+        dest[i] = src[i];
+        i++;
+    }
+    dest[i] = '\0'; // Add null terminator
+}
+
+
+int isEmpty(StudentPtr sPtr) {
+    return sPtr == NULL;
+}
+
+
+void printList(StudentPtr currentPtr) {
+    if (isEmpty(currentPtr)) {
+        puts("No students in the list.");
+    }
+    else {
+        puts("\nStudent List:");
+        while (currentPtr != NULL) {
+            printf("ID: %d, Name: %s, Score: %.2f\n",
+                currentPtr->ID, currentPtr->name, currentPtr->score);
+            currentPtr = currentPtr->nextPtr;
+        }
+    }
+}
