@@ -1,0 +1,44 @@
+// Fig. 3.1: fig03_01.cpp
+// Define class GradeBook with a member function displayMessage;
+// Create a GradeBook object and call its displayMessage function.
+#include <iostream>
+using namespace std;
+
+// GradeBook class definition
+class GradeBook
+{
+public:
+    // function that displays a welcome message to the GradeBook user
+    void displayMessage() const
+    {
+        cout << "Welcome to the Grade Book!" << endl;
+    } // end function displayMessage
+
+    void changScore()
+    {
+        cout << "請輸入成績:" << endl;
+        cin >> myScore;
+        while (myScore < 0 || myScore > 99)
+        {
+            cout << "分數不得大於99或小於0，請重新輸入" << endl;
+            cin >> myScore;
+        }
+    }
+    
+    void printScore()
+    {
+        cout << "我的成績:" << myScore << endl;
+    }
+private:
+    int myScore = 0;
+}; // end class GradeBook  
+
+// function main begins program execution
+int main()
+{
+    GradeBook myGradeBook; // create a GradeBook object named myGradeBook
+    myGradeBook.displayMessage(); // call object's displayMessage function
+    myGradeBook.printScore();
+    myGradeBook.changScore();
+    myGradeBook.printScore();
+} // end main
