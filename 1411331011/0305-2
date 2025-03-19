@@ -1,0 +1,181 @@
+#define _CRT_SECURE_NO_WARNINGS  
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// 定義學生結構
+struct Student {
+    int ID;                     
+    char name[50];         
+    float score;                
+    struct Student* nextPtr;    
+};
+
+typedef struct Student Student;
+typedef Student* StudentPtr;
+
+void insert(StudentPtr* sPtr, int ID, const char name[], float score);
+int deleteNode(StudentPtr* sPtr, int ID);  
+void printList(StudentPtr currentPtr);
+void freeList(StudentPtr* sPtr);
+int isEmpty(StudentPtr sPtr);
+void instructions(void);
+
+int main(void) {
+    StudentPtr startPtr = NULL; 
+    int ID;
+    char name[50];
+    float score;
+
+    instructions(); 
+
+ 
+    for (int i = 0; i < 4; i++) {
+        printf("請輸入學生資料 (學號 姓名 成績): ");
+        if (scanf("%d %49s %f", &ID, name, &score) != 4) {
+            printf("輸入格式錯誤，請重新執行程式。\n");
+            return 1;
+        }
+        insert(&startPtr, ID, name, score); // 插入鏈結串列
+    }
+
+    
+    printList(startPtr);
+
+   
+    printf("請輸入要刪除的學生學號: ");
+    if (scanf("%d", &ID) != 1) {
+        printf("輸入錯誤，請重新執行程式。\n");
+        return 1;
+    }
+
+    
+    if (deleteNode(&startPtr, ID)) {
+        printf("學號 %d 已刪除。\n", ID);
+    }
+    else {
+        printf("找不到學號 %d，刪除失敗。\n", ID);
+    }
+
+    
+    printList(startPtr);
+
+    freeList(&startPtr);
+
+    printf("按 Enter 鍵退出...");
+    getchar();
+    getchar();
+
+    return 0;
+}
+
+
+void instructions(void) {
+    puts("請輸入 4 筆學生資料，系統將依據學號排序存入鏈結串列。");
+}
+
+
+void insert(StudentPtr* sPtr, int ID, const char name[], float score) {
+  
+    StudentPtr newPtr = (StudentPtr)malloc(sizeof(Student));
+
+    if (newPtr == NULL) { // 確保記憶體分配成功
+        printf("記憶體分配失敗，無法插入學生 %s。\n", name);
+        return;
+    }
+
+  
+    newPtr->ID = ID;
+    strcpy(newPtr->name, name);
+    newPtr->score = score;
+    newPtr->nextPtr = NULL;
+
+  
+    if (*sPtr == NULL || ID < (*sPtr)->ID) {
+        newPtr->nextPtr = *sPtr;
+        *sPtr = newPtr;
+        return;
+    }
+
+    StudentPtr previousPtr = NULL;
+    StudentPtr currentPtr = *sPtr;
+
+ 
+    while (currentPtr != NULL && ID > currentPtr->ID) {
+        previousPtr = currentPtr;
+        currentPtr = currentPtr->nextPtr;
+    }
+
+    previousPtr->nextPtr = newPtr;
+    newPtr->nextPtr = currentPtr;
+}
+
+int deleteNode(StudentPtr* sPtr, int ID) {
+    // 如果鏈結串列為空
+    if (*sPtr == NULL) {
+        return 0;
+    }
+
+    StudentPtr tempPtr = NULL;
+    // 若目標是第一個節點
+    if ((*sPtr)->ID == ID) {
+        tempPtr = *sPtr;
+        *sPtr = (*sPtr)->nextPtr; // 調整指標
+        free(tempPtr); // 釋放記憶體
+        return 1;
+    }
+
+    StudentPtr previousPtr = *sPtr;
+    StudentPtr currentPtr = (*sPtr)->nextPtr;
+
+    while (currentPtr != NULL && currentPtr->ID != ID) {
+        previousPtr = currentPtr;
+        currentPtr = currentPtr->nextPtr;
+    }
+
+    // 若找到節點則刪除
+    if (currentPtr != NULL) {
+        tempPtr = currentPtr;
+        previousPtr->nextPtr = currentPtr->nextPtr;
+        free(tempPtr); // 釋放記憶體
+        return 1;
+    }
+
+    return 0; // 找不到該學號
+}
+
+// 判斷鏈結串列是否為空
+int isEmpty(StudentPtr sPtr) {
+    return sPtr == NULL;
+}
+
+// 印出鏈結串列中的所有學生資訊
+void printList(StudentPtr currentPtr) {
+    if (isEmpty(currentPtr)) {
+        puts("鏈結串列為空。\n");
+    }
+    else {
+        puts("\n學生資料 (依學號排序)：");
+        puts("學號\t姓名\t成績");
+
+        // 逐一列印學生資訊
+        while (currentPtr != NULL) {
+            printf("%d\t%s\t%.2f\n", currentPtr->ID, currentPtr->name, currentPtr->score);
+            currentPtr = currentPtr->nextPtr;
+        }
+        puts(""); // 換行
+    }
+}
+
+void freeList(StudentPtr* sPtr) {
+    StudentPtr currentPtr = *sPtr;
+    StudentPtr tempPtr;
+
+    while (currentPtr != NULL) {
+        tempPtr = currentPtr;
+        currentPtr = currentPtr->nextPtr;
+        free(tempPtr);
+    }
+
+    *sPtr = NULL; // 確保指標不再指向無效記憶體
+}
