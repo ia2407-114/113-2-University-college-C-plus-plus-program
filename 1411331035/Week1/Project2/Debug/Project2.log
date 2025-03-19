@@ -1,0 +1,4 @@
+﻿  Source.cpp
+D:\1411331035\Project2\Source.cpp(20,50): warning C4838: 從 'double' 到 'int' 的轉換必須是縮小轉換
+D:\1411331035\Project2\Source.cpp(20,50): warning C4244: '正在初始化': 將 'double' 轉換為 'int'，由於類型不同，可能導致資料遺失
+  Project2.vcxproj -> D:\1411331035\Project2\Debug\Project2.exe
