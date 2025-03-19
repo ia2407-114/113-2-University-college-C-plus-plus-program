@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+
+class GradeBook
+{
+private:
+    int myID = 0; // Initialize ID to 0
+
+public:
+    void displayMessage() const
+    {
+        cout << "Welcome to the Grade Book!" << endl;
+    }
+
+    void changeID(int newID) { myID = newID; }
+    void printID() const 
+    { 
+        cout << "Current ID: " << myID << endl; 
+    }
+};
+
+int main()
+{
+    GradeBook myGradeBook;
+    int newID;
+    myGradeBook.displayMessage();
+    myGradeBook.printID();
+    cout << "Enter a new ID: ";
+    cin >> newID;
+    myGradeBook.changeID(newID);
+    myGradeBook.printID();
+    return 0;
+}
