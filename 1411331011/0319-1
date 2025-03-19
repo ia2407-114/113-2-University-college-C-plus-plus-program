@@ -1,0 +1,46 @@
+#include <iostream>
+using namespace std;
+
+class GradeBook
+{
+private:
+    int myID; 
+
+public:
+    // 建構函數
+    GradeBook(int id) : myID(id) {}
+
+
+    void displayMessage() const
+    {
+        cout << "Welcome to the Grade Book!" << endl;
+    }
+
+    // 印出目前的 ID
+    void printID() const
+    {
+        cout << "目前ID: " << myID << endl;
+    }
+
+    // 修改 ID
+    void changeID(int newID)
+    {
+        myID = newID;
+    }
+};
+
+int main()
+{
+    int newID;
+    GradeBook myGradeBook(1); 
+
+    myGradeBook.displayMessage(); 
+    myGradeBook.printID(); // 印出目前 ID
+
+    cout << "輸入新的ID: ";
+    cin >> newID; // 從鍵盤輸入新的 ID
+
+    myGradeBook.changeID(newID); // 修改 ID
+
+    myGradeBook.printID(); // 印出修改後的 ID
+}
