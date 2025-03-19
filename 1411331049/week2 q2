@@ -1,0 +1,41 @@
+#include <stdio.h>
+
+typedef struct student {
+    char name[20];   
+    int ID;          
+    int math, comput; 
+    float AVG;       
+} stu;
+
+int main(void) {
+    FILE* sfPtr;  
+
+    
+    if (fopen_s(&sfPtr, "students.dat", "rb") != 0) {
+        printf_s("File could not be opened.\n");
+        return 1;  
+    }
+
+    
+    printf_s("%-10s%-20s%-10s%-10s%-10s\n", "Student ID", "Name", "Math Grade", "Comp Grade", "Average");
+
+    // Read all records from file (until eof)
+    while (!feof(sfPtr)) {
+        // Create student structure with default values
+        stu student = { "", 0, 0, 0, 0.0f };
+
+        int result = fread(&student, sizeof(stu), 1, sfPtr);
+
+        // Display record
+        if (result != 0 && student.ID != 0) {
+            // Calculate average grade
+            student.AVG = (float)(student.math + student.comput) / 2;
+
+            // Display student information
+            printf_s("%-10d%-20s%-10d%-10d%-10.2f\n", student.ID, student.name, student.math, student.comput, student.AVG);
+        }
+    }
+
+    fclose(sfPtr);  // Close the file
+    return 0;
+}
