@@ -1,0 +1,51 @@
+#include <stdio.h>
+
+// Student data structure definition
+typedef struct student {
+    char name[20];   // Name (first and last)
+    int ID;          // Student ID
+    int math, comput; // Grades for Math and Computer subjects
+    float AVG;       // Average grade
+} stu;
+
+int main(void) {
+    FILE* sfPtr;   // Student file pointer
+
+    // Open the student file using fopen_s
+    if (fopen_s(&sfPtr, "students.dat", "rb+")) {
+        printf_s("Student file could not be opened.\n");
+        return 1;
+    }
+
+    // Initialize student structure
+    stu student = { "", 0, 0, 0, 0.0f };
+
+    // User inputs student ID
+    printf_s("%s", "Enter student ID (1 to 100, 0 to end input): ");
+    scanf_s("%d", &student.ID);
+
+    // User enters student data
+    while (student.ID != 0) {
+        // Enter name (first and last), grades for math and computer subjects
+        printf_s("%s", "Enter name (first and last), math grade, computer grade: ");
+        scanf_s("%19s %d %d", student.name, sizeof(student.name), &student.math, &student.comput);
+
+        // Calculate average grade
+        student.AVG = (float)(student.math + student.comput) / 2;
+
+        // Seek to the position in the file for the user-specified record
+        fseek(sfPtr, (student.ID - 1) * sizeof(stu), SEEK_SET);
+
+        // Write the student data to the file
+        fwrite(&student, sizeof(stu), 1, sfPtr);
+
+        // Prompt for the next student ID
+        printf_s("%s", "Enter student ID: ");
+        scanf_s("%d", &student.ID);
+    }
+
+    // Close the file
+    fclose(sfPtr);
+
+    return 0;
+}
