@@ -1,0 +1,47 @@
+
+#include <iostream>
+using namespace std;
+
+// GradeBook class definition
+class GradeBook
+{
+private:
+    int myID; // private member variable
+
+public:
+    // Function to set the initial ID
+    void changeID(int newID)
+    {
+        myID = newID;
+    }
+
+    // Function to print the current ID
+    void printID() const
+    {
+        cout << "Current ID: " << myID << endl;
+    }
+}; // end class GradeBook  
+
+// Main function
+int main()
+{
+    GradeBook myGradeBook; // Create a GradeBook object
+    int id;
+
+    // Get the first ID from the user
+    cout << "Enter the first ID: ";
+    cin >> id;
+    myGradeBook.changeID(id); // Set the initial ID
+
+    myGradeBook.printID(); // Print the first ID
+
+    // Get the second ID from the user
+    cout << "Enter the new ID: ";
+    cin >> id;
+    myGradeBook.changeID(id); // Change to the new ID
+
+    myGradeBook.printID(); // Print the updated ID
+
+    return 0;
+} // end main
+
