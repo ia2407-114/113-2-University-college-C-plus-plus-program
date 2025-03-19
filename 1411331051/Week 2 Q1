@@ -1,17 +1,16 @@
 #include <stdio.h>
 
-// Student data structure definition
 typedef struct student {
-    char name[20];   // Name (first and last)
-    int ID;          // Student ID
-    int math, comput; // Grades for Math and Computer subjects
-    float AVG;       // Average grade
+    char name[20];   
+    int ID;          
+    int math, comput; 
+    float AVG;       
 } stu;
 
 int main(void) {
-    FILE* sfPtr;   // Student file pointer
+    FILE* sfPtr;   
 
-    // Open the student file using fopen_s
+    
     if (fopen_s(&sfPtr, "students.dat", "rb+")) {
         printf_s("Student file could not be opened.\n");
         return 1;
