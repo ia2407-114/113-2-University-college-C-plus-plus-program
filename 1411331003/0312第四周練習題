@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-// ¨ç¦¡«Å§i
+// å‡½å¼å®£å‘Š
 int volume(int);
 double volume(int, int);
 int volume(int, int, int);
@@ -10,36 +10,36 @@ int main()
 {
     int a, b, c;
 
-    cout << "½Ğ¿é¤J¤@­Ó¾ã¼Æ¡G" << endl;
+    cout << "è«‹è¼¸å…¥ä¸€å€‹æ•´æ•¸ï¼š" << endl;
     cin >> a;
-    cout << "¸Ó¼Æªº¥ß¤èÅé¿n¬°¡G" << volume(a) << endl;
+    cout << "è©²æ•¸çš„ç«‹æ–¹é«”ç©ç‚ºï¼š" << volume(a) << endl;
 
-    cout << "½Ğ¿é¤J¨â­Ó¾ã¼Æ¡G" << endl;
+    cout << "è«‹è¼¸å…¥å…©å€‹æ•´æ•¸ï¼š" << endl;
     cin >> a >> b;
-    cout << "¸Ó¶ê¬WÅé¿n¬°¡G" << volume(a, b) << endl;
+    cout << "è©²åœ“æŸ±é«”ç©ç‚ºï¼š" << volume(a, b) << endl;
 
-    cout << "½Ğ¿é¤J¤T­Ó¾ã¼Æ¡G" << endl;
+    cout << "è«‹è¼¸å…¥ä¸‰å€‹æ•´æ•¸ï¼š" << endl;
     cin >> a >> b >> c;
-    cout << "¸Óªø¤èÅé¿n¬°¡G" << volume(a, b, c) << endl;
+    cout << "è©²é•·æ–¹é«”ç©ç‚ºï¼š" << volume(a, b, c) << endl;
 
     cout << "finished!" << endl;
 
     return 0;
 }
 
-// ­pºâ¥ß¤èÅéªºÅé¿n
+// è¨ˆç®—ç«‹æ–¹é«”çš„é«”ç©
 int volume(int a)
 {
     return a * a * a;
 }
 
-// ­pºâ¶ê¬WÅéªºÅé¿n
+// è¨ˆç®—åœ“æŸ±é«”çš„é«”ç©
 double volume(int a, int b)
 {
     return a * a * 3.14159 * b;
 }
 
-// ­pºâªø¤èÅéªºÅé¿n
+// è¨ˆç®—é•·æ–¹é«”çš„é«”ç©
 int volume(int a, int b, int c)
 {
     return a * b * c;
