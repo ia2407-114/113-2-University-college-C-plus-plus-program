@@ -1,0 +1,48 @@
+
+#include <iostream>
+
+using namespace std;
+
+// Function prototypes
+int volume(int);
+double volume(int, int);
+int volume(int, int, int);
+
+int main() {
+    double sideValue = 10.0; // Stores value entered by user
+
+    int a, b, c;
+    float result;
+
+    cout << "Enter one integer:" << endl;  // Prompt for one integer
+    cin >> a;
+    cout << "Cube Volume: " << volume(a) << endl;  // Calculate and display cube volume
+
+    cout << "Enter two integers:" << endl;  // Prompt for two integers
+    cin >> a >> b;
+    cout << "Cylinder Volume: " << volume(a, b) << endl;  // Calculate and display cylinder volume
+
+    cout << "Enter three integers:" << endl;  // Prompt for three integers
+    cin >> a >> b >> c;
+    cout << "Rectangular Prism Volume: " << volume(a, b, c) << endl;  // Calculate and display rectangular prism volume
+
+    cout << "Finished!" << endl;
+
+    return 0;
+}
+
+// Function to calculate cube volume
+int volume(int a) {
+    return a * a * a;
+}
+
+// Function to calculate cylinder volume
+double volume(int a, int b) {
+    return a * a * 3.14159 * b;
+}
+
+// Function to calculate rectangular prism volume
+int volume(int a, int b, int c) {
+    return a * b * c;
+}
+
