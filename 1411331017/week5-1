@@ -29,6 +29,7 @@ private:
 }; 
 
 // function main begins program execution
+
 int main()
 {
     GradeBook myGradeBook; // create a GradeBook object named myGradeBook
