@@ -1,0 +1,2 @@
+﻿Source.obj : error LNK2019: 在函式 "void __cdecl deletestudent(struct Student * *,int)" (?deletestudent@@YAXPAPAUStudent@@H@Z)_main 中參考了無法解析的外部符號
+D:\week3\week3\Debug\week3.exe : fatal error LNK1120: 1 個無法解析的外部符號
