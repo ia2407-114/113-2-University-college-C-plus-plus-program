@@ -1,0 +1,59 @@
+#include <iostream>
+#include <string> 
+using namespace std;
+class DOG
+{
+public:
+    explicit  DOG(string name, int age)
+    {
+        DogName = name;
+        DogAge = age;
+    }
+    void setDogName_and_Age(string name, int age)
+    {
+        if (age < 20)
+        {
+            DogName = name; 
+            DogAge = age;
+        }
+        else
+            cout << "It's too old!!! Invalid data!" << endl;
+
+    }
+
+    string getDogName() const
+    {
+        return DogName; 
+    } 
+
+    int getDogAge() const
+    {
+        return DogAge; 
+    } 
+
+    void displayMessage() const
+    {
+        cout << "This my dog named \n%s" << getDogName() << "!" << endl;
+        cout << "This my dog now is age\n %d" << getDogName() << "!" << endl;
+    } 
+private:
+    string DogName; 
+    int DogAge;
+}; 
+int main()
+{
+    string nameOfDog; 
+    DOG myDog1("Lucky", 12);
+    int age = 12;
+    cout << "Initial dog name is: %s \n" << myDog1.getDogName() << endl;
+    cout << "Initial dog age is: %d \n" << myDog1.getDogAge() << endl;
+
+    cout << "\nPlease enter the dog name:" << endl;
+    getline(cin, nameOfDog); 
+    cout << "\nPlease enter the dog age:" << endl;
+    cin >> age; 
+    myDog1.setDogName_and_Age(nameOfDog, age); 
+
+    cout << endl;
+    myDog1.displayMessage(); 
+} 
