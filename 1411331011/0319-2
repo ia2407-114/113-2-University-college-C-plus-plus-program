@@ -5,7 +5,7 @@ using namespace std;
 class GradeBook
 {
 private:
-    int grade; // 私有成員變數 grade
+    int grade; // 私有成員變數 
 
 public:
     // 建構函數，初始化成績
@@ -32,7 +32,7 @@ public:
         cout << "目前成績: " << grade << endl;
     }
 
-    // 修改成績（需在 0~99 之間）
+    // 修改成績（0~99 之間）
     void changeGrade(int newGrade)
     {
         if (newGrade >= 0 && newGrade <= 99)
