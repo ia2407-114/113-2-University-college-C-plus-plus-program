@@ -1,0 +1,75 @@
+#include <iostream>
+#include <string> // 使用 C++ 標準字串類別
+using namespace std;
+
+
+class Dog {
+public:
+    Dog(string name, int age)
+    {
+        setName(name);
+        setAge(age);
+    }
+
+    // 設定狗的名字
+    void setName(string name)
+    {
+        if (name != "")
+            dogName = name;
+        else
+            cout << "名字不能為空!" << endl;
+    }
+
+    // 取得狗的名字
+    string getName() const
+    {
+        return dogName;
+    }
+
+    void setAge(int age)
+    {
+        if (age > 0 && age < 20)
+            dogAge = age;
+        else
+        {
+            cout << "It's too old" << endl;
+        }
+    }
+
+    // 取得狗的年齡
+    int getAge() const
+    {
+        return dogAge;
+    }
+
+    // 列印狗的資訊
+    void displaymessage() const
+    {
+        cout << "狗的名字: " << getName()  << endl;
+        cout << "\n狗的年齡: " << getAge() << " 歲" << endl;
+    }
+
+private:
+    string dogName; // 狗的名字
+    int dogAge;     // 狗的年齡
+};
+
+// 主函數
+int main()
+{
+    string name;
+    int age;
+
+    cout << "輸入狗的名字: ";
+    getline(cin, name);
+
+    cout << "輸入狗的年齡: ";
+    cin >> age;
+
+    Dog myDog(name, age);
+
+    cout << endl;
+    myDog.displaymessage(); // 顯示狗的資訊
+
+    return 0;
+}
