@@ -1,0 +1,67 @@
+#include <iostream>
+#include <string> // 使用C++标准字符串类
+using namespace std;
+
+// Dog class definition
+class DOG
+{
+public:
+
+    // 设定狗的名字和年龄
+    void setDogName_and_Age(string name, int age)
+    {
+        if (age < 20)
+        {
+            DogName = name;
+            DogAge = age;
+        }
+        else
+            cout << "It's too old!!! Invalid data!" << endl;
+    }
+
+    string getDogName() const
+    {
+        return DogName;
+    }
+
+    int getDogAge() const
+    {
+        return DogAge;
+    }
+
+    void displayMessage() const
+    {
+        cout << "This is my dog named " << getDogName() << "!" << endl;
+        cout << "My dog is now " << getDogAge() << " years old!" << endl;
+    }
+
+private:
+    string DogName;
+    int DogAge;
+};
+
+// function main begins program execution
+int main()
+{
+    string nameOfDog;
+    int age = 12;
+    DOG myDog1; // 创建DOG对象
+
+    // 显示初始值
+    cout << "Initial dog name is: " << myDog1.getDogName() << endl;
+    cout << "Initial dog age is: " << myDog1.getDogAge() << endl;
+
+    // 让用户输入狗的名字和年龄
+    cout << "\nPlease enter the dog name:" << endl;
+    getline(cin, nameOfDog);
+
+    cout << "\nPlease enter the dog age:" << endl;
+    cin >> age;
+
+    myDog1.setDogName_and_Age(nameOfDog, age);
+
+    cout << endl;
+    myDog1.displayMessage(); // 显示狗的信息
+
+    return 0;
+}
