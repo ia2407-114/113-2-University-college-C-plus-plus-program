@@ -1,0 +1,84 @@
+#include <iostream>
+#include <string> // 使用 C++ 標準字符串類
+using namespace std;
+
+// PetDog 類別定義
+class PetDog {
+public:
+    // 設定狗的名字和年齡的建構函數
+    explicit PetDog(string name, int age) {
+        dogName = name;
+        setAge(age); // 使用 setAge 函數來初始化年齡
+    }
+
+    // 設定狗的名字
+    void setDogName(string name) {
+        dogName = name; // 儲存狗的名字
+    }
+
+    // 取得狗的名字
+    string getDogName() const {
+        return dogName; // 返回狗的名字
+    }
+
+    // 設定狗的年齡，並檢查年齡是否合法
+    void setAge(int age) {
+        if (age >= 0 && age <= 20) {
+            dogAge = age; // 年齡合理，設定年齡
+        }
+        else {
+            cout << "Age is not valid. Age must be between 0 and 20." << endl;
+            dogAge = -1; // 這表示無效的年齡
+        }
+    }
+
+    // 取得狗的年齡
+    int getAge() const {
+        return dogAge;
+    }
+
+    // 顯示狗的資料
+    void displayMessage() const {
+        if (dogAge != -1) { // 只在年齡有效時顯示
+            cout << "Dog's Name: " << getDogName() << endl;
+            cout << "Dog's Age: " << getAge() << " years old" << endl;
+        }
+        else {
+            cout << "Invalid age for the dog!" << endl;
+        }
+    }
+
+private:
+    string dogName; // 狗的名字
+    int dogAge;     // 狗的年齡
+}; // 結束 PetDog 類別
+
+// 主函數開始程式執行
+int main() {
+    string dogName;
+    int dogAge;
+
+    // 提示用戶輸入狗的名字和年齡
+    cout << "Enter the dog's name: ";
+    getline(cin, dogName); // 讀取狗的名字，可以包含空格
+
+    cout << "Enter the dog's age: ";
+    cin >> dogAge; // 讀取狗的年齡
+
+    // 創建 PetDog 物件，並初始化狗的名字和年齡
+    PetDog myPetDog(dogName, dogAge);
+
+    // 顯示狗的資訊
+    cout << endl;
+    myPetDog.displayMessage();
+
+    // 若年齡無效，可以再次設定年齡
+    if (myPetDog.getAge() == -1) {
+        cout << "Please enter a valid age for the dog: ";
+        cin >> dogAge;
+        myPetDog.setAge(dogAge); // 更新年齡
+        myPetDog.displayMessage(); // 顯示更新後的資訊
+    }
+
+    return 0;
+} // 結束 main 函數
