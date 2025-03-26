@@ -1,1 +1,55 @@
+#include <iostream>
+#include <string> 
+using namespace std;
 
+class DOG {
+public:
+    // Constructor
+    DOG(string name, int age) {
+        setDogNameAndAge(name, age);
+    }
+
+    void setDogNameAndAge(string name, int age) {
+        if (age < 20 && age > 0) {
+            DogName = name;
+            DogAge = age;
+        }
+        else {
+            cout << "Invalid age! Age must be between 1 and 19." << endl;
+        }
+    }
+
+    string getDogName() const {
+        return DogName;
+    }
+
+    int getDogAge() const {
+        return DogAge;
+    }
+
+    void displayMessage() const {
+        cout << "This is my dog named " << getDogName() << "!" << endl;
+        cout << "My dog is now " << getDogAge() << " years old." << endl;
+    }
+
+private:
+    string DogName;
+    int DogAge;
+};
+
+int main() {
+    string nameOfDog;
+    int age;
+
+    cout << "Please enter the dog's name: ";
+    getline(cin, nameOfDog);
+    cout << "Please enter the dog's age: ";
+    cin >> age;
+
+    DOG myDog(nameOfDog, age);
+
+    cout << endl;
+    myDog.displayMessage(); 
+
+    return 0;
+}
