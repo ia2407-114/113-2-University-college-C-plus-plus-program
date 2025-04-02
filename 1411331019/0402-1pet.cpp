@@ -8,15 +8,15 @@ int main()
 {
     string nameOfpet;int age;
 
-    pet pet1("petname", 10);//«Ø¥ßª«¥ó¨Ãµ¹¤©ªì©l¸ê®Æ
+    pet pet1("petname", 10);//å»ºç«‹ç‰©ä»¶ä¸¦çµ¦äºˆåˆå§‹è³‡æ–™
 
-    cout << "­ì©l¸ê®Æ¬°:" << endl;
+    cout << "åŸå§‹è³‡æ–™ç‚º:" << endl;
     pet1.display();
 
-    cout << "\n½Ğ¿é¤JÃdª«©m¦W:" << endl;
+    cout << "\nè«‹è¼¸å…¥å¯µç‰©å§“å:" << endl;
     getline(cin, nameOfpet);
 
-    cout << "\n½Ğ¿é¤JÃdª«¦~ÄÖ:" << endl;
+    cout << "\nè«‹è¼¸å…¥å¯µç‰©å¹´é½¡:" << endl;
     cin >> age;
     cout << endl;
 
