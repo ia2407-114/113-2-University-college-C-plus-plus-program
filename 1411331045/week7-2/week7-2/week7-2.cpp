@@ -20,7 +20,7 @@ int main() {
     cin >> age;  // 讀取年齡
 
     dog1.setdogdata(name, age);
-
+    dog1.setCourseName(name);
     cout << "\n更新後的狗的資訊：" << endl;
     dog1.display();  // 顯示更新後的資訊
 

@@ -14,6 +14,8 @@ public:
     int getAge() const;
     // 列印狗的資訊
     void display() const;
+    void setCourseName(string name);
+    
 private:
     string dogName;  // 狗的名字
     int dogAge;      // 狗的年齡

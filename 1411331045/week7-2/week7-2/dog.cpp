@@ -27,3 +27,17 @@ void Dog::display() const {
     cout << "狗的年齡:" << dogAge << endl;
     cout << "狗的姓名:" << dogName << endl;
 }
+void Dog::setCourseName(string name)
+{
+    if (name.size() <= 10) // if name has 25 or fewer characters
+        dogName = name; // store the course name in the object
+
+    if (name.size() > 10) // if name has more than 25 characters
+    {
+        // set courseName to first 25 characters of parameter name
+        dogName = name.substr(0, 10); // start at 0, length of 25
+
+        cerr << "Name \"" << name << "\" 超過10個字元\n"
+            << "取用前10個字元.\n" << endl;
+    } // end if
+} // end function setCourseName
