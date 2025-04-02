@@ -12,7 +12,6 @@ public:
         string getName() const;
     // function that displays a welcome message
         void setAge(int dogAge);
-
         int getAge() const;
 
         void newdisplayDogInfo() const;
@@ -20,7 +19,7 @@ public:
         void displayDogInfo() const;
 
 private:
-    string name;  // dog's name
+    string dogname;  // dog's name
     int age;      // dog's age
 }; // end class PetDog  
 
