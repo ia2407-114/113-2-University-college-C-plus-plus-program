@@ -9,12 +9,23 @@ PetDog::PetDog(string dogName, int dogAge) {
 }
 
 // function that sets the course name
-void PetDog::setName(string dogName) {
-    name = dogName;
-}
+void PetDog::setName(string name)
+{
+    if (name.size() <= 10) // if name has 25 or fewer characters
+        dogname = name; // store the course name in the object
+
+    if (name.size() > 10) // if name has more than 25 characters
+    {
+        // set courseName to first 25 characters of parameter name
+        dogname = name.substr(0, 10); // start at 0, length of 25
+
+        cerr << "Name \"" << name << "\" exceeds maximum length (10).\n"
+            << "Limiting courseName to first 10 characters.\n" << endl;
+    } // end if
+} // end function setCourseName
 
 string PetDog::getName() const {
-    return name;
+    return dogname;
 }
 // function that displays a welcome message
 void PetDog::setAge(int dogAge) {
