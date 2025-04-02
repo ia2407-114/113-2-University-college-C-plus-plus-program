@@ -1,2 +1,5 @@
-﻿  week7_today0402.cpp
+﻿  gradebook.cpp
+  week7_today0402.cpp
+  正在產生程式碼...
+LINK : warning LNK4076: 無效的累加狀態檔 'Debug\week7_today0402.ilk' (將被刪除); 非累加連結中
   week7_today0402.vcxproj -> D:\練習C++用\week7_today0402\Debug\week7_today0402.exe

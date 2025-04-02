@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="gradebook.cpp" />
     <ClCompile Include="week7_today0402.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -18,10 +18,13 @@
     <ClCompile Include="week7_today0402.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
+    <ClCompile Include="gradebook.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gradebook.h">
-      <Filter>標頭檔</Filter>
+      <Filter>來源檔案</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
