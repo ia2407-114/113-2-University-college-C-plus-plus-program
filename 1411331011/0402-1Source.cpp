@@ -6,8 +6,8 @@ using namespace std;
 
 int main()
 {
-    string nameOfDog; //string¬O®w¦sÃþ§O  string of characters to store the course name
-    DOG myDog1("Lucky", 12); // create a DOG ¬O¨Ï¥ÎªÌ¦Û­qÃþ§O object named myGradeBook
+    string nameOfDog; //stringæ˜¯åº«å­˜é¡žåˆ¥  string of characters to store the course name
+    DOG myDog1("Lucky", 12); // create a DOG æ˜¯ä½¿ç”¨è€…è‡ªè¨‚é¡žåˆ¥ object named myGradeBook
     int age = 12;
     // display initial value of courseName
     cout << "Initial dog name is: %s \n" << myDog1.getDogName() << endl;
