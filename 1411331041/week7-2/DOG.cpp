@@ -21,6 +21,18 @@ void DOG::setDogName_and_Age(string name, int age)
     {
         cout << "too old!" << endl;
     }
+
+    if (name.size() <= 10) // if name has 25 or fewer characters
+        DogName = name; // store the course name in the object
+
+    if (name.size() > 10) // if name has more than 25 characters
+    {
+        // set courseName to first 25 characters of parameter name
+        DogName = name.substr(0, 10); // start at 0, length of 25
+
+        cerr << "Name \"" << name << "\" exceeds maximum length (10).\n"
+            << "Limiting courseName to first 10 characters.\n" << endl;
+    } // end if
 } // end function setCourseName
 
 // function that gets the course name
@@ -42,3 +54,4 @@ void DOG::displayMessage() const
     cout << "This dog's name is \n" << getDogName() << "!" << endl;
     cout << "This dog's age is \n" << getDogAge() << "!" << endl;
 } // end function displayMessage
+
