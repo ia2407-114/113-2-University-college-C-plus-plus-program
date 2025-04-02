@@ -1,5 +1,0 @@
-﻿  2.cpp
-C:\Users\pan10\OneDrive\Desktop\114.02.26\2\2.cpp(4,7): error C2078: 初始設定式太多
-C:\Users\pan10\OneDrive\Desktop\114.02.26\2\2.cpp(21,27): warning C4838: 從 'double' 到 'int' 的轉換必須是縮小轉換
-C:\Users\pan10\OneDrive\Desktop\114.02.26\2\2.cpp(21,27): warning C4244: '正在初始化': 將 'double' 轉換為 'int'，由於類型不同，可能導致資料遺失
-C:\Users\pan10\OneDrive\Desktop\114.02.26\2\2.cpp(22,14): warning C4267: '正在初始化': 將 'size_t' 轉換為 'int'，資料可能遺失
