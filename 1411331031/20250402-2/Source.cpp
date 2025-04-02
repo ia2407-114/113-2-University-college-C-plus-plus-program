@@ -3,8 +3,6 @@
 #include "pet.h"
 using namespace std;
 
-
-
 int main()
 {
     string nameOfpet;int age;
@@ -16,6 +14,7 @@ int main()
 
     cout << "\n請輸入寵物姓名:" << endl;
     getline(cin, nameOfpet);
+    pet1.namesize(nameOfpet);
 
     cout << "\n請輸入寵物年齡:" << endl;
     cin >> age;

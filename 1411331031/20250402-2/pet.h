@@ -17,6 +17,8 @@ public:
     int getpetage();//讀取年齡函式
    
     void display();//印出姓名和年齡
+
+    void namesize(string name);
     
 private:
     string petname; //私有資料petname
