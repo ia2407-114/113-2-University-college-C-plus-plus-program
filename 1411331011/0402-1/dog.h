@@ -10,7 +10,6 @@ public:
     
     void setDogName_and_Age(string name, int age);
     
-
     // function that gets the course name
     string getDogName() const;
     
