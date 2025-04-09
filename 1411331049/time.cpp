@@ -1,45 +1,44 @@
-// Fig. 9.2: Time.cpp
-// Time class member-function definitions.
+// Fig. 9.3: fig09_03.cpp
+// Program to test class Time.
+// NOTE: This file must be compiled with Time.cpp.
 #include <iostream>
-#include <iomanip>
-#include <stdexcept> // for illegal_argument exception class
-#include "Time.h" // include definition of class Time from Time.h
-
+#include <stdexcept> // for invalid_argument exception class
+#include "Time.h" // include definitionof class Time from Time.h
 using namespace std;
 
-// Time constructor initializes each data member to zero.
-Time::Time() 
-   : hour( 0 ), minute( 0 ), second( 0 )
-{ 
-} // end Time constructor
-
-// set new Time value using universal time
-void Time::setTime( int h, int m, int s )
+int main()
 {
-   // validate hour, minute and second
-   if ( ( h >= 0 && h < 24 ) && ( m >= 0 && m < 60 ) && 
-      ( s >= 0 && s < 60 ) ) 
+   Time t; // instantiate object t of class Time
+
+   // output Time object t's initial values
+   cout << "The initial universal time is ";
+   t.printUniversal(); // 00:00:00
+   cout << "\nThe initial standard time is ";
+   t.printStandard(); // 12:00:00 AM
+
+   t.setTime( 13, 27, 6 ); // change time
+
+   // output Time object t's new values
+   cout << "\n\nUniversal time after setTime is ";
+   t.printUniversal(); // 13:27:06
+   cout << "\nStandard time after setTime is ";
+   t.printStandard(); // 1:27:06 PM
+
+   // attempt to set the time with invalid values
+   try
    {
-      hour = h;
-      minute = m;
-      second = s;
-   } // end if
-   else
-      throw invalid_argument( 
-         "hour, minute and/or second was out of range" );
-} // end function setTime
+      t.setTime( 99, 99, 99 ); // all values out of range
+   } // end try
+   catch ( invalid_argument &e )
+   {
+      cout << "\n\nException: " << e.what() << endl;
+   } // end catch
 
-// print Time in universal-time format (HH:MM:SS)
-void Time::printUniversal() const
-{
-   cout << setfill( '0' ) << setw( 2 ) << hour << ":" 
-      << setw( 2 ) << minute << ":" << setw( 2 ) << second;
-} // end function printUniversal
-
-// print Time in standard-time format (HH:MM:SS AM or PM)
-void Time::printStandard() const
-{
-   cout << ( ( hour == 0 || hour == 12 ) ? 12 : hour % 12 ) << ":" 
-      << setfill( '0' ) << setw( 2 ) << minute << ":" << setw( 2 )
-      << second << ( hour < 12 ? " AM" : " PM" );
-} // end function printStandard
+   // output t's values after specifying invalid values
+   cout << "\nAfter attempting invalid settings:"
+      << "\nUniversal time: ";
+   t.printUniversal(); // 13:27:06
+   cout << "\nStandard time: ";
+   t.printStandard(); // 1:27:06 PM
+   cout << endl;
+} // end main
