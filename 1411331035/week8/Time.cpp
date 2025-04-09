@@ -8,38 +8,39 @@
 using namespace std;
 
 // Time constructor initializes each data member to zero.
-Time::Time()
-    : hour(0), minute(0), second(0)
+Date::Date()
+    : year(0), month(0), day(0)
 {
 } // end Time constructor
 
 // set new Time value using universal time
-void Time::setTime(int h, int m, int s)
+void Date::setDate(int y, int m, int d)
 {
-    // validate hour, minute and second
-    if ((h >= 0 && h < 24) && (m >= 0 && m < 60) &&
-        (s >= 0 && s < 60))
+    // validate month and day
+    if ((m >= 1 && m <= 12) && (d >= 1 && d <= 31))
     {
-        hour = h;
-        minute = m;
-        second = s;
+        year = y;
+        month = m;
+        day = d;
     } // end if
     else
-        throw invalid_argument(
-            "hour, minute and/or second was out of range");
-} // end function setTime
+    {
+        throw invalid_argument("year, month and/or day was out of range");
+    } // end else
+}
+
 
 // print Time in universal-time format (HH:MM:SS)
-void Time::printUniversal() const
+void Date::printUniversal() const
 {
-    cout << setfill('0') << setw(2) << hour << ":"
-        << setw(2) << minute << ":" << setw(2) << second;
+    cout << setfill('0') << setw(2) << year << "/"
+        << setw(2) << month << "/" << setw(2) << day;
 } // end function printUniversal
 
 // print Time in standard-time format (HH:MM:SS AM or PM)
-void Time::printStandard() const
+void Date::printStandard() const
 {
-    cout << ((hour == 0 || hour == 12) ? 12 : hour % 12) << ":"
-        << setfill('0') << setw(2) << minute << ":" << setw(2)
-        << second << (hour < 12 ? " AM" : " PM");
+    cout << ((year<1911) ? year : year-1911) << "/"
+        << setfill('0') << setw(2) << month << "/" << setw(2)
+        << day;
 } // end function printStandard
