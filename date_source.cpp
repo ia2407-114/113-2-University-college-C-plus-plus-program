@@ -26,7 +26,7 @@ void Date::setYear(int y)
     if (y >= 0)
         year = y;
     else
-        throw invalid_argument("¦~¥²¶·¤j©ó0");
+        throw invalid_argument("å¹´å¿…é ˆå¤§æ–¼0");
 } // end function setHour
 
 // set minute value
@@ -35,7 +35,7 @@ void Date::setMonth(int m)
     if (m >= 1 && m < 13)
         month = m;
     else
-        throw invalid_argument("¤ë¥÷¥²¶·¬°1 - 12");
+        throw invalid_argument("æœˆä»½å¿…é ˆç‚º1 - 12");
 } // end function setMinute
 
 // set second value
@@ -44,7 +44,7 @@ void Date::setDay(int d)
     if (d >= 1 && d < 32)
         day = d;
     else
-        throw invalid_argument("½ÐÀË¬d¤é´Á1-31");
+        throw invalid_argument("è«‹æª¢æŸ¥æ—¥æœŸ1-31");
 } // end function setSecond
 
 // return hour value
