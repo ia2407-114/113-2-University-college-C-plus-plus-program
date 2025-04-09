@@ -1,0 +1,104 @@
+#include <iostream>
+#include <string>
+#include"Header.h"
+using namespace std;
+
+int main() {
+    string dogName;
+    int dogAge;
+
+    cout << "請輸入狗狗的名字：" << endl;
+    getline(cin, dogName);
+
+    cout << "請輸入狗狗的年齡：" << endl;
+    cin >> dogAge;
+
+    Dog myDog(dogName, dogAge);//呼叫建構子
+
+    cout << endl;
+    myDog.printInfo();//呼叫成員函數列印
+
+    return 0;
+}
+
+--------
+
+
+#pragma once
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Dog {
+public:
+    explicit Dog(string Dogname, int Dogage);
+
+
+    void setName(string n);//成員函數
+
+
+    void setAge(int a);
+
+
+    string getDogName() const;
+
+    int getDogAge() const;
+    void printInfo() const;
+
+private:
+    string name;
+    int age;
+};
+
+--------
+
+#include <iostream>
+#include <string>
+#include"Header.h"
+using namespace std;
+
+
+Dog::Dog(string Dogname, int Dogage) {
+    setName(Dogname);
+    setAge(Dogage);
+}
+
+void Dog::setName(string n) {
+    if (n.empty()) {
+        cout << "名字不能為空喔!" << endl;
+    }
+    else if (n.size() <= 10) {
+        name = n;
+    }
+    else {
+        name = n.substr(0, 10);
+        cerr << "名字 \"" << n << "\" 超過 10 字元，已自動截斷為：" << name << endl;
+    }
+}
+
+
+--------
+
+void Dog::setAge(int a) {//成員函數
+    if (a >= 0 && a <= 20)
+        age = a;
+    else {
+        cout << "你家狗確定能活今天?(請輸入0~20歲以內)" << endl;
+        age = -1; // 無效
+    }
+}
+
+string Dog::getDogName() const {//成員函數
+    return name;
+}
+
+int Dog::getDogAge() const {//成員函數
+    return age;
+}
+
+void Dog::printInfo() const {//成員函數
+    if (age != -1)
+        cout << "狗狗的名字是 [" << name << "]，今年 " << age << " 歲了！" << endl;
+    else
+        cout << "狗狗的資料輸入不完整，請重新設定。" << endl;
+}
