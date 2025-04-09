@@ -1,44 +1,39 @@
-// Fig. 9.3: fig09_03.cpp
-// Program to test class Time.
-// NOTE: This file must be compiled with Time.cpp.
+// Fig. 9.6: fig09_06.cpp 
+// Constructor with default arguments.
 #include <iostream>
-#include <stdexcept> // for invalid_argument exception class
-#include "Time.h" // include definitionof class Time from Time.h
+#include <stdexcept>
+#include "Time.h" 
 using namespace std;
 
 int main()
 {
-   Time t; // instantiate object t of class Time
+    Time t1;
+    Time t2(1847);
+    Time t3(1214, 2);
+    Time t4(2014, 3, 10);
 
-   // output Time object t's initial values
-   cout << "The initial universal time is ";
-   t.printUniversal(); // 00:00:00
-   cout << "\nThe initial standard time is ";
-   t.printStandard(); // 12:00:00 AM
+    cout << "建構方式：\n\nt1：所有參數均為預設值\n";
+    t1.printUniversal();
+    t1.printStandard();
 
-   t.setTime( 13, 27, 6 ); // change time
+    cout << "\n\nt2：指定年；月日預設\n";
+    t2.printUniversal();
+    t2.printStandard();
 
-   // output Time object t's new values
-   cout << "\n\nUniversal time after setTime is ";
-   t.printUniversal(); // 13:27:06
-   cout << "\nStandard time after setTime is ";
-   t.printStandard(); // 1:27:06 PM
+    cout << "\n\nt3：指定年和月；日預設\n";
+    t3.printUniversal();
+    t3.printStandard();
 
-   // attempt to set the time with invalid values
-   try
-   {
-      t.setTime( 99, 99, 99 ); // all values out of range
-   } // end try
-   catch ( invalid_argument &e )
-   {
-      cout << "\n\nException: " << e.what() << endl;
-   } // end catch
+    cout << "\n\nt4：指定年、月和日\n";
+    t4.printUniversal(); 
+    t4.printStandard(); 
 
-   // output t's values after specifying invalid values
-   cout << "\nAfter attempting invalid settings:"
-      << "\nUniversal time: ";
-   t.printUniversal(); // 13:27:06
-   cout << "\nStandard time: ";
-   t.printStandard(); // 1:27:06 PM
-   cout << endl;
-} // end main
+    try
+    {
+        Time t5(2017, 3, 32);
+    }
+    catch (invalid_argument& e)
+    {
+        cerr << "\n\n初始化 t5 時出現異常：" << e.what() << endl;
+    }
+}
