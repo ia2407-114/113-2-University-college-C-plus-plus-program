@@ -1,0 +1,60 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Dog 類別定義
+class Dog
+{
+public:
+    // 建構子，讓使用者輸入狗的名字和年齡
+    Dog()
+    {
+        cout << "請輸入狗的名字: ";
+        getline(cin, dogName);
+
+        cout << "請輸入狗的年齡: ";
+        cin >> dogAge;
+        cin.ignore(); // 清除輸入緩衝區
+
+        // 確保年齡在合理範圍內
+        if (dogAge <= 0 || dogAge >= 20)
+        {
+            cout << "年齡必須介於 1 到 19 之間! 設定預設值 1 歲" << endl;
+            dogAge = 1;
+        }
+    }
+
+    // 取得狗的名字
+    string getName() const
+    {
+        return dogName;
+    }
+
+    // 取得狗的年齡
+    int getAge() const
+    {
+        return dogAge;
+    }
+
+    // 列印狗的資訊
+    void displaymessage() const
+    {
+        cout << "狗的名字: " << getName() << "\n狗的年齡: " << getAge() << " 歲" << endl;
+    }
+
+private:
+    string dogName; // 狗的名字
+    int dogAge;     // 狗的年齡
+};
+
+// 主函數
+int main()
+{
+    // 直接透過建構子建立 Dog 物件，並讓使用者輸入狗的屬性
+    Dog myDog;
+
+    cout << endl;
+    myDog.displaymessage(); // 顯示狗的資訊
+
+    return 0;
+}
