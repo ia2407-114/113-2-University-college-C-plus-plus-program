@@ -1,67 +1,60 @@
-#include <iostream>
-#include <string> // 使用C++标准字符串类
+#include<iostream>
+#include <string>
 using namespace std;
 
-// Dog class definition
-class DOG
+class GradeBook
 {
 public:
-
-    // 设定狗的名字和年龄
-    void setDogName_and_Age(string name, int age)
+    void setCourseName(string name)
     {
-        if (age < 20)
-        {
-            DogName = name;
-            DogAge = age;
-        }
+        if (name != "")
+            courseName = name;
         else
-            cout << "It's too old!!! Invalid data!" << endl;
+            cout << "empty string!!!" << endl;
+
+    }
+    void setage(int newage)
+    {
+        while (newage < 0 || newage >= 20)
+        {
+            cout << "錯誤，寵物年紀無法超過20或小於1，請重新設定" << endl;
+            cout << "請輸入新的寵物年齡:";
+            cin >> newage;
+        }
+        age = newage;
     }
 
-    string getDogName() const
+    string getCourseName() const
     {
-        return DogName;
+        return courseName;
     }
 
-    int getDogAge() const
+    int getage() const
     {
-        return DogAge;
+        return age;
     }
 
     void displayMessage() const
     {
-        cout << "This is my dog named " << getDogName() << "!" << endl;
-        cout << "My dog is now " << getDogAge() << " years old!" << endl;
-    }
 
+        cout << "新的寵物名稱為:" << getCourseName() << endl;
+        cout << "新的寵物年齡為:" << getage() << endl;
+    }
 private:
-    string DogName;
-    int DogAge;
+    string courseName;
+    int age = 1;
 };
 
-// function main begins program execution
 int main()
 {
-    string nameOfDog;
-    int age = 12;
-    DOG myDog1; // 创建DOG对象
-
-    // 显示初始值
-    cout << "Initial dog name is: " << myDog1.getDogName() << endl;
-    cout << "Initial dog age is: " << myDog1.getDogAge() << endl;
-
-    // 让用户输入狗的名字和年龄
-    cout << "\nPlease enter the dog name:" << endl;
-    getline(cin, nameOfDog);
-
-    cout << "\nPlease enter the dog age:" << endl;
+    string nameOfCourse;
+    int age;
+    GradeBook myGradeBook;
+    cout << "請輸入寵物名稱:";
+    getline(cin, nameOfCourse);
+    cout << "請輸入寵物年齡:";
     cin >> age;
-
-    myDog1.setDogName_and_Age(nameOfDog, age);
-
-    cout << endl;
-    myDog1.displayMessage(); // 显示狗的信息
-
-    return 0;
+    myGradeBook.setage(age);
+    myGradeBook.setCourseName(nameOfCourse);
+    myGradeBook.displayMessage();
 }
