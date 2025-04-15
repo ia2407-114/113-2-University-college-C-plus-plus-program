@@ -1,121 +1,138 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
-struct Student {
-    int id;
-    char name[50];
-    struct Student* nextPtr;
+// 定義學生結構體
+typedef struct student {
+    char name[20];
+    int ID;
+    int math, comput;
+    double AVG;
+} stu;
+
+// 自我參考結構
+struct listNode {
+    stu data; // 每個節點包含學生結構
+    struct listNode* nextPtr; // 指向下一個節點的指標
 };
 
-typedef struct Student Student;
-typedef Student* StudentPtr;
+typedef struct listNode ListNode;
+typedef ListNode* ListNodePtr;
 
-void insert(StudentPtr* sPtr, int id, char name[]);
-void deleteNode(StudentPtr* sPtr, int id);
-void printList(StudentPtr currentPtr);
-int isEmpty(StudentPtr sPtr);
+// 函數原型
+void insert(ListNodePtr* sPtr, stu value);
+void printList(ListNodePtr currentPtr);
+int isEmpty(ListNodePtr sPtr);
+int deleteNode(ListNodePtr* sPtr, int ID);  // 新增刪除函式
 
-int main(void)
-{
-    StudentPtr startPtr = NULL;
-    int id;
-    char name[50];
+int main(void) {
+    ListNodePtr startPtr = NULL; // 初始化鏈表
+    stu newStudent;
 
+    // 輸入四筆學生資料
     for (int i = 0; i < 4; i++) {
-        printf("輸入第 %d 筆學生資料：\n", i + 1);
-        printf("輸入學生學號: ");
-        scanf_s("%d", &id);
-        printf("輸入學生姓名: ");
-        scanf_s("%s", name, sizeof(name));
-        insert(&startPtr, id, name);
+        printf("Enter name, ID, math score, computer score for student %d:\n", i + 1);
+        scanf_s("%19s %d %d %d", newStudent.name, (unsigned)_countof(newStudent.name), &newStudent.ID, &newStudent.math, &newStudent.comput);
+        newStudent.AVG = (newStudent.math + newStudent.comput) / 2.0; // 計算平均分
+        insert(&startPtr, newStudent); // 插入學生
     }
 
-    printf("輸入要刪除的學生學號: ");
-    scanf_s("%d", &id);
-    deleteNode(&startPtr, id);
-
+    // 印出鏈結串列的內容
     printList(startPtr);
 
-    puts("程式結束。");
+    // 🔻 透過鍵盤輸入要刪除的 ID
+    int targetID;
+    printf("Enter student ID to delete: ");
+    scanf_s("%d", &targetID);
+
+    // 嘗試刪除節點
+    if (deleteNode(&startPtr, targetID)) {
+        printf("Student with ID %d deleted.\n", targetID);
+    } else {
+        printf("Student with ID %d not found.\n", targetID);
+    }
+
+    // 再次印出
+    printList(startPtr);
+
+    return 0;
 }
 
-void insert(StudentPtr* sPtr, int id, char name[])
-{
-    StudentPtr newPtr = (StudentPtr)malloc(sizeof(Student));
+// 插入學生資料（按 ID 排序）
+void insert(ListNodePtr* sPtr, stu value) {
+    ListNodePtr newPtr = (ListNodePtr)malloc(sizeof(ListNode)); // 顯式轉型
     if (newPtr != NULL) {
-        newPtr->id = id;
-        strcpy_s(newPtr->name, sizeof(newPtr->name), name);
+        newPtr->data = value;
         newPtr->nextPtr = NULL;
 
-        StudentPtr previousPtr = NULL;
-        StudentPtr currentPtr = *sPtr;
+        ListNodePtr previousPtr = NULL;
+        ListNodePtr currentPtr = *sPtr;
 
-        while (currentPtr != NULL && id > currentPtr->id) {
+        // 找到適當的位置（按 ID 排序）
+        while (currentPtr != NULL && value.ID > currentPtr->data.ID) {
             previousPtr = currentPtr;
             currentPtr = currentPtr->nextPtr;
         }
 
+        // 插入到開頭
         if (previousPtr == NULL) {
             newPtr->nextPtr = *sPtr;
             *sPtr = newPtr;
-        }
-        else {
+        } else {
             previousPtr->nextPtr = newPtr;
             newPtr->nextPtr = currentPtr;
         }
-    }
-    else {
-        printf("學生資料未插入，無法分配記憶體。\n");
+    } else {
+        printf("Student %s not inserted. No memory available.\n", value.name);
     }
 }
 
-void deleteNode(StudentPtr* sPtr, int id)
-{
-    if (isEmpty(*sPtr)) {
-        printf("串列為空，無法刪除。\n");
-        return;
+// 判斷列表是否為空
+int isEmpty(ListNodePtr sPtr) {
+    return sPtr == NULL;
+}
+
+// 輸出列表
+void printList(ListNodePtr currentPtr) {
+    if (isEmpty(currentPtr)) {
+        puts("List is empty.\n");
+    } else {
+        puts("The student list:");
+
+        while (currentPtr != NULL) {
+            printf("Name: %s, ID: %d, Math: %d, Comput: %d, AVG: %.2f\n",
+                currentPtr->data.name, currentPtr->data.ID,
+                currentPtr->data.math, currentPtr->data.comput,
+                currentPtr->data.AVG);
+            currentPtr = currentPtr->nextPtr;
+        }
+
+        puts("");
     }
+}
 
-    StudentPtr previousPtr = NULL;
-    StudentPtr currentPtr = *sPtr;
+// 🔻 根據 ID 刪除節點
+int deleteNode(ListNodePtr* sPtr, int ID) {
+    ListNodePtr previousPtr = NULL;
+    ListNodePtr currentPtr = *sPtr;
 
-    while (currentPtr != NULL && currentPtr->id != id) {
+    // 尋找要刪除的節點
+    while (currentPtr != NULL && currentPtr->data.ID != ID) {
         previousPtr = currentPtr;
         currentPtr = currentPtr->nextPtr;
     }
 
-    if (currentPtr == NULL) {
-        printf("未找到學號 %d 的學生資料。\n", id);
-    }
-    else {
+    // 找到該節點
+    if (currentPtr != NULL) {
+        // 要刪的是開頭節點
         if (previousPtr == NULL) {
             *sPtr = currentPtr->nextPtr;
-        }
-        else {
+        } else {
             previousPtr->nextPtr = currentPtr->nextPtr;
         }
+
         free(currentPtr);
-        printf("學號 %d 的學生資料已刪除。\n", id);
+        return 1; // 刪除成功
     }
-}
 
-void printList(StudentPtr currentPtr)
-{
-    if (isEmpty(currentPtr)) {
-        puts("串列為空。\n");
-    }
-    else {
-        puts("學生資料如下:");
-        while (currentPtr != NULL) {
-            printf("學號: %d, 姓名: %s --> ", currentPtr->id, currentPtr->name);
-            currentPtr = currentPtr->nextPtr;
-        }
-        puts("NULL\n");
-    }
-}
-
-int isEmpty(StudentPtr sPtr)
-{
-    return sPtr == NULL;
+    return 0; // 沒找到
 }
