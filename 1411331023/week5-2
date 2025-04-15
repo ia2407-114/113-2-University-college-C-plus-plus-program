@@ -1,0 +1,58 @@
+#include <iostream>
+using namespace std;
+
+// GradeBook 類別定義
+class GradeBook
+{
+public:
+    // 設定成績，限制在 0 到 99
+    void setGrade(int g)
+    {
+        if (g >= 0 && g <= 99)
+        {
+            grade = g;
+        }
+        else
+        {
+            cout << "Invalid grade. Please enter a value between 0 and 99." << endl;
+        }
+    }
+
+    // 取得目前成績
+    int getGrade() const
+    {
+        return grade;
+    }
+
+    // 顯示歡迎訊息與目前成績
+    void displayMessage() const
+    {
+        cout << "Welcome! The current grade is: " << getGrade() << endl;
+    }
+
+private:
+    int grade =85; // 成績預設為 85
+};
+
+// 主程式
+int main()
+{
+    GradeBook myGradeBook; // 建立 GradeBook 物件
+
+    // 1. 印出初始成績
+    cout << "Initial grade is: " << myGradeBook.getGrade() << endl;
+
+    // 2. 使用者輸入成績
+    int newGrade;
+    cout << "\nPlease enter the new grade (0 - 99): ";
+    cin >> newGrade;
+
+    // 設定成績（包含驗證）
+    myGradeBook.setGrade(newGrade);
+
+    // 3. 顯示訊息與新成績
+    cout << endl;
+    myGradeBook.displayMessage();
+
+    return 0;
+}
