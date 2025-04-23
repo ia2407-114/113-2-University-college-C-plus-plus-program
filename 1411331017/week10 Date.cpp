@@ -1,10 +1,10 @@
 // Time.cpp
-// µ{¦¡½X§Ç¸¹: 22196883
+// ç¨‹å¼ç¢¼åºè™Ÿ: 22196883
 #include <iostream>
 #include <iomanip>
 #include <stdexcept>
 #include "Date.h"
- // ½Ğ¦b¦¹¤Ş¤J¥²­nªº¨Ï¥ÎªÌ¼ĞÀYÀÉ
+ // è«‹åœ¨æ­¤å¼•å…¥å¿…è¦çš„ä½¿ç”¨è€…æ¨™é ­æª”
 using namespace std;
 
 // Time constructor initializes each data member 
@@ -13,14 +13,14 @@ Date::Date(int year, int month, int day)
     setDate(year, month, day); // validate and set time
 } // end Time constructor
 
-// ¸Ñºc¤l
+// è§£æ§‹å­
 Date::~Date()
 {
-    cout << "¦è¤¸¤é´Á: ";
+    cout << "è¥¿å…ƒæ—¥æœŸ: ";
     printUniversal();
     cout << endl;
 
-    cout << "¥Á°ê¤é´Á: ";
+    cout << "æ°‘åœ‹æ—¥æœŸ: ";
     printStandard();
     cout << endl;
 
@@ -63,7 +63,7 @@ void Date::setDay(int d)
     else if ((month == 2) && (d >= 1 && d <= 28))
         day = d;
     else
-        throw invalid_argument("³o­Ó¤ë¨S¦³³o¤@¤Ñ!!!");
+        throw invalid_argument("é€™å€‹æœˆæ²’æœ‰é€™ä¸€å¤©!!!");
 } // end function setSecond
 
 // return hour value
