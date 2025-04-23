@@ -33,4 +33,4 @@ private:
 	unsigned int day; // 0 - 59
 }; // end class Time
 
-#endif //6312 ³o¬ODate.h
+#endif //6312

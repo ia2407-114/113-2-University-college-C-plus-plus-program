@@ -1,0 +1,91 @@
+// Time.cpp
+// 程式碼序號: 22196883
+
+#include <iostream>
+#include <iomanip>
+#include <stdexcept>
+#include "Date.h"
+
+using namespace std;
+
+// Constructor
+Date::Date(int year, int month, int day)
+{
+    setDate(year, month, day);
+}
+
+// Destructor
+Date::~Date()
+{
+    cout << "\n西元日期: ";
+    printUniversal();
+    cout << "\n民國日期: ";
+    printStandard();
+    cout << "\nBye Bye!" << endl;
+}
+
+// Setters
+void Date::setDate(int y, int m, int d)
+{
+    setYear(y);
+    setMonth(m);
+    setDay(d);
+}
+
+void Date::setYear(int y)
+{
+    if (y >= 1911 && y < 2100)
+        year = y;
+    else
+        throw invalid_argument("year must be 1911-2099");
+}
+
+void Date::setMonth(int m)
+{
+    if (m >= 1 && m < 13)
+        month = m;
+    else
+        throw invalid_argument("month must be 1-12");
+}
+
+void Date::setDay(int d)
+{
+    if ((month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) && (d >= 1 && d <= 31))
+        day = d;
+    else if ((month == 4 || month == 6 || month == 9 || month == 11) && (d >= 1 && d <= 30))
+        day = d;
+    else if (month == 2 && d >= 1 && d <= 28)
+        day = d;
+    else
+        throw invalid_argument("這個月沒有這一天!!!");
+}
+
+// Getters
+unsigned int Date::getYear() const
+{
+    return year;
+}
+
+unsigned int Date::getMonth() const
+{
+    return month;
+}
+
+unsigned int Date::getDay() const
+{
+    return day;
+}
+
+// Output
+void Date::printUniversal() const
+{
+    cout << setfill('0') << setw(4) << getYear() << "/"
+        << setw(2) << getMonth() << "/" << setw(2) << getDay();
+}
+
+void Date::printStandard() const
+{
+    int rocYear = getYear() - 1911;
+    cout << setw(3) << setfill('0') << rocYear << "/"
+        << setw(2) << getMonth() << "/" << setw(2) << getDay();
+}

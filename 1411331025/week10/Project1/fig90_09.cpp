@@ -33,4 +33,4 @@ int main()
         cout << "\n\nException" << e.what() << endl;
 
     }
-} // end main//6310 這是main.cpp的程式碼
+} // end main//6310

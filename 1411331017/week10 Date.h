@@ -1,5 +1,6 @@
+#pragma once
 // Time.h
-// µ{¦¡½X§Ç¸¹: 22196312
+// ç¨‹å¼ç¢¼åºè™Ÿ: 22196312
 // Member functions defined in Time.cpp.
 
 // prevent multiple inclusions of header 
@@ -10,8 +11,8 @@
 class Date
 {
 public:
-	explicit Date(int = 0, int = 0, int = 0);
-	~Date();// default constructor
+	explicit Date(int = 0, int = 0, int = 0); // default constructor
+	~Date(); // è§£æ§‹å­
 
 	// set functions
 	void setDate(int, int, int); // set hour, minute, second
@@ -20,7 +21,7 @@ public:
 	void setDay(int); // set second (after validation)
 
 	// get functions
-	// ½Ğ¹ï·ÓTime.cppµ{¦¡½X¡A©ó¦¹³B¥[¤J¯Ê¤Öªº¦¨­û¨ç¼Æ¦WºÙ
+	// è«‹å°ç…§Time.cppç¨‹å¼ç¢¼ï¼Œæ–¼æ­¤è™•åŠ å…¥ç¼ºå°‘çš„æˆå“¡å‡½æ•¸åç¨±
 	unsigned int getYear() const; // return hour
 	unsigned int getMonth() const; // return minute
 	unsigned int getDay() const; // return second
@@ -33,4 +34,4 @@ private:
 	unsigned int day; // 0 - 59
 }; // end class Time
 
-#endif //6312 ³o¬ODate.h
+#endif //6312

@@ -1,3 +1,4 @@
+#pragma once
 // Time.h
 // 程式碼序號: 22196312
 // Member functions defined in Time.cpp.
@@ -10,8 +11,8 @@
 class Date
 {
 public:
-	explicit Date(int = 0, int = 0, int = 0);
-	~Date();// default constructor
+	explicit Date(int = 0, int = 0, int = 0); // default constructor
+	~Date(); // default constructor
 
 	// set functions
 	void setDate(int, int, int); // set hour, minute, second
@@ -33,4 +34,4 @@ private:
 	unsigned int day; // 0 - 59
 }; // end class Time
 
-#endif //6312 這是Date.h
+#endif //6312
