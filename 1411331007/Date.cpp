@@ -1,80 +1,36 @@
-// Fig. 9.5: Time.cpp
-// Member-function definitions for class Date.
+// 程式碼序號: 22196310
 #include <iostream>
-#include <iomanip>
 #include <stdexcept>
-#include "Date.h" // include definition of class Date from Date.h
+#include "Date.h"
+ // 請在此引入必要的使用者標頭檔
 using namespace std;
 
-// Time constructor initializes each data member 
-Date::Date(int year, int month, int day)
+int main()
 {
-    setDate(year, month, day); // validate and set time
-} // end Date constructor
+    int year, month, day;
 
-// set new Date value using universal time
-void Date::setDate(int y, int m, int d)
-{
-    setYear(y); // set private field hour
-    setMonth(m); // set private field minute
-    setDay(d); // set private field second
-} // end function setDate
+    cout << "請輸入西元年:";
+    cin >> year;
+    cout << "\n請輸入月份:";
+    cin >> month;
+    cout << "\n請輸入日期:";
+    cin >> day;
 
-// set hour value
-void Date::setYear(int y)
-{
-    if (y >= 1990 && y < 2050)
-        year = y;
-    else
-        throw invalid_argument("year must be 1990-2050");
-} // end function setYear
+    try {
+        Date date(year, month, day);
 
-// set month value
-void Date::setMonth(int m)
-{
-    if (m >= 1 && m < 12)
-        month = m;
-    else
-        throw invalid_argument("month must be 1-12");
-} // end function setMonth
+        cout << "西元日期:";
+        date.printUniversal();
+        cout << endl;
 
-// set day value
-void Date::setDay(int d)
-{
-    if (d >= 1 && d < 31)
-        day = d;
-    else
-        throw invalid_argument("day must be 1-31");
-} // end function setDay
+        cout << "民國日期:";
+        date.printStandard();
+        cout << endl;
+    }
 
-// return year value
-unsigned int Date::getYear() const
-{
-    return year;
-} // end function getYear
+    catch (invalid_argument& e)
+    {
+        cout << "\n\nException" << e.what() << endl;
 
-// return month value
-unsigned int Date::getMonth() const
-{
-    return month;
-} // end function getMonth
-
-// return day value
-unsigned int Date::getDay() const
-{
-    return day;
-} // end function getDay
-
-// print Date in universal-date format (YYYY:MM:DD)
-void Date::printAD() const
-{
-    cout << setw(4) << getYear() << "/" << setfill('0')
-        << setw(2) << getMonth() << "/" << setw(2) << getDay() ;
-} // end function printUniversal
-
-// print Time in standard-time format (HH:MM:SS AM or PM)
-void Date::printROC_Year() const
-{
-    int ROC_Year = getYear() - 1911;
-    cout << ROC_Year << "/" << setfill('0') << setw(2) << getMonth() << "/" << setw(2) << getDay();
-} // end function printStandard
+    }
+} // end main//6310 這是main.cpp的程式碼
