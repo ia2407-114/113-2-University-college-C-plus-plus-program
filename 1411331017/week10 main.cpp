@@ -1,29 +1,29 @@
-// µ{¦¡½X§Ç¸¹: 22196310
+// ç¨‹å¼ç¢¼åºè™Ÿ: 22196310
 #include <iostream>
 #include <stdexcept>
-#include "Date.h"
- // ½Ğ¦b¦¹¤Ş¤J¥²­nªº¨Ï¥ÎªÌ¼ĞÀYÀÉ
+#include "week10 Date.h"
+ // è«‹åœ¨æ­¤å¼•å…¥å¿…è¦çš„ä½¿ç”¨è€…æ¨™é ­æª”
 using namespace std;
 
 int main()
 {
     int year, month, day;
 
-    cout << "½Ğ¿é¤J¦è¤¸¦~:";
+    cout << "è«‹è¼¸å…¥è¥¿å…ƒå¹´:";
     cin >> year;
-    cout << "\n½Ğ¿é¤J¤ë¥÷:";
+    cout << "\nè«‹è¼¸å…¥æœˆä»½:";
     cin >> month;
-    cout << "\n½Ğ¿é¤J¤é´Á:";
+    cout << "\nè«‹è¼¸å…¥æ—¥æœŸ:";
     cin >> day;
 
     try {
         Date date(year, month, day);
 
-        cout << "¦è¤¸¤é´Á:";
+        cout << "è¥¿å…ƒæ—¥æœŸ:";
         date.printUniversal();
         cout << endl;
 
-        cout << "¥Á°ê¤é´Á:";
+        cout << "æ°‘åœ‹æ—¥æœŸ:";
         date.printStandard();
         cout << endl;
     }
