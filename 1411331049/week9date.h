@@ -1,35 +1,34 @@
-// main.cpp
-// 程式碼序號: 22196310
+// Date.h
+// 程式碼序號: 22196312
 
-#include <iostream>
-#include <stdexcept>
-#include "Date.h"
+#ifndef DATE_H
+#define DATE_H
 
-using namespace std;
-
-int main()
+class Date
 {
-    int year, month, day;
+public:
+    explicit Date(int = 0, int = 0, int = 0); // default constructor
+    ~Date(); // destructor
 
-    cout << "請輸入西元年:";
-    cin >> year;
-    cout << "\n請輸入月份:";
-    cin >> month;
-    cout << "\n請輸入日期:";
-    cin >> day;
+    // seat functions
+    void setDate(int, int, int);
+    void setYear(int);
+    void setMonth(int);
+    void setDay(int);
 
-    try {
-        Date date(year, month, day);
+    // get functions
+    unsigned int getYear() const;
+    unsigned int getMonth() const;
+    unsigned int getDay() const;
 
-        cout << "西元日期:";
-        date.printUniversal();
-        cout << endl;
+    void printUniversal() const;
+    void printStandard() const;
 
-        cout << "民國日期:";
-        date.printStandard();
-        cout << endl;
-    }
-    catch (invalid_argument& e) {
-        cout << "\n\nException: " << e.what() << endl;
-    }
-}
+private:
+    unsigned int year;
+    unsigned int month;
+    unsigned int day;
+};
+
+#endif
+#pragma once
