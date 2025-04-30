@@ -1,0 +1,9 @@
+﻿  Date.cpp
+  Pet.h
+  正在產生程式碼...
+Debug\Pet.obj : warning LNK4042: 指定物件超過一次，已忽略多餘的部分
+fig9_21.obj : error LNK2019: 在函式 "public: __thiscall Pet::Pet(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class Date,class Date)" (??0Pet@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0VDate@@1@Z)_main 中參考了無法解析的外部符號
+fig9_21.obj : error LNK2019: 在函式 "public: __thiscall Pet::~Pet(void)" (??1Pet@@QAE@XZ)"public: void * __thiscall Pet::`scalar deleting destructor'(unsigned int)" (??_GPet@@QAEPAXI@Z) 中參考了無法解析的外部符號
+fig9_21.obj : error LNK2019: 在函式 "public: void __thiscall Pet::printPetDetails(void)const " (?printPetDetails@Pet@@QBEXXZ)_main 中參考了無法解析的外部符號
+fig9_21.obj : error LNK2019: 在函式 "public: bool __thiscall Pet::checkPetDetails(void)const " (?checkPetDetails@Pet@@QBE_NXZ)_main 中參考了無法解析的外部符號
+D:\week11\Debug\week11.exe : fatal error LNK1120: 4 個無法解析的外部符號
