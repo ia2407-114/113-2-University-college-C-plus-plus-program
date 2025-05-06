@@ -28,16 +28,13 @@ Date::~Date() {
     cout << endl;
 }
 
-unsigned int Date::checkDay(int testDay) const {
+unsigned int Date::checkDay(int testDay) const
+{
     static const array<int, monthsPerYear + 1> daysPerMonth =
-    { 0, 31,28,31,30,31,30,31,31,30,31,30,31 };
+        { 0, 31,28,31,30,31,30,31,31,30,31,30,31 };
 
     if (testDay > 0 && testDay <= daysPerMonth[month])
         return testDay;
 
-    if (month == 2 && testDay == 29 &&
-        (year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)))
-        return testDay;
-
-    throw invalid_argument("此日期在指定的月份與年份中無效");
+    throw invalid_argument("此日期在指定的月份中無效");
 }
