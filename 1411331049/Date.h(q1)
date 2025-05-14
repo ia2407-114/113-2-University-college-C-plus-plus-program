@@ -1,0 +1,22 @@
+// Date.h
+#ifndef DATE_H
+#define DATE_H
+
+#include <iostream>
+#include <stdexcept>
+
+class Date {
+public:
+    Date(int year = 2000, int month = 1, int day = 1);
+    void print() const;
+    bool isEarlierThan(const Date& other) const;
+    int calculateAge(const Date& asOf) const;
+
+private:
+    int year;
+    int month;
+    int day;
+    int checkDay(int d) const;
+};
+
+#endif // DATE_H
