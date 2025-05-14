@@ -1,14 +1,21 @@
 #pragma once
-#include <stdexcept> // for invalid_argument exception class
+#ifndef DATE_H
+#define DATE_H
 
-class Date
-{
+class Date {
 public:
-    virtual void setDate(int year, int month, int day) = 0;  // Abstract method for setting the date
-    virtual void printGregorian() const = 0;  // Abstract method to print Gregorian date
-    virtual void printRepublic() const = 0;   // Abstract method to print Republic of China (ROC) date
-
-    virtual ~Date() {}  // Virtual destructor
+    static const unsigned int monthsPerYear = 12;
+    explicit Date(int = 1, int = 1, int = 1900);
+    void print() const;
+    int getYear() const { return year; }
+    int getMonth() const { return month; }
+    int getDay() const { return day; }
+    ~Date();
+private:
+    unsigned int month;
+    unsigned int day;
+    unsigned int year;
+    unsigned int checkDay(int) const;
 };
 
-
+#endif
