@@ -1,0 +1,43 @@
+// main.cpp
+#include <iostream>
+#include <vector>
+#include <string>
+#include "Pet.h"
+#include "Date.h"
+
+int main() {
+    int n;
+    std::cout << "Enter number of pets: ";
+    std::cin >> n;
+    std::vector<Pet*> pets;
+
+    for (int i = 0; i < n; ++i) {
+        std::string type, name;
+        int by, bm, bd, ay, am, ad;
+
+        std::cout << "Pet " << i+1 << " type: ";
+        std::cin >> type;
+        std::cout << "Pet " << i+1 << " name: ";
+        std::cin >> name;
+        std::cout << "Birth date (YYYY MM DD): ";
+        std::cin >> by >> bm >> bd;
+        std::cout << "Adoption date (YYYY MM DD): ";
+        std::cin >> ay >> am >> ad;
+
+        try {
+            Date birth(by, bm, bd);
+            Date adopt(ay, am, ad);
+            pets.push_back(new Pet(type, name, birth, adopt));
+        } catch (const std::exception& e) {
+            std::cerr << "Error: " << e.what() << std::endl;
+            --i; // retry current index
+        }
+    }
+
+    // invoke destructors
+    for (auto p : pets) {
+        delete p;
+    }
+
+    return 0;
+}
