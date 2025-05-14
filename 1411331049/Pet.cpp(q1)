@@ -1,0 +1,29 @@
+
+// Pet.cpp
+#include <iostream>
+#include "Pet.h"
+
+Pet::Pet(const std::string& type, const std::string& name,
+         const Date& birth, const Date& adopt)
+    : type(type), name(name), birthDate(birth), adoptDate(adopt) {
+    this->validate();
+}
+
+Pet::~Pet() {
+    std::cout << "Pet Info: " << type << " " << name
+              << ", Born: ";
+    birthDate.print();
+    std::cout << ", Adopted: ";
+    adoptDate.print();
+    std::cout << std::endl;
+}
+
+void Pet::validate() const {
+    if (adoptDate.isEarlierThan(birthDate)) {
+        throw std::invalid_argument("Adoption date must be on or after birth date");
+    }
+    int age = birthDate.calculateAge(adoptDate);
+    if (age < 0 || age > 20) {
+        throw std::invalid_argument("Age must be between 0 and 20 years");
+    }
+}
