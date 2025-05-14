@@ -1,0 +1,40 @@
+// Date.cpp
+#include "Date.h"
+
+Date::Date(int y, int m, int d)
+    : year(y), month(m), day(1) {
+    if (m < 1 || m > 12) {
+        throw std::invalid_argument("Month must be 1-12");
+    }
+    day = checkDay(d);
+}
+
+int Date::checkDay(int d) const {
+    static const int daysPerMonth[] = {0,31,28,31,30,31,30,31,31,30,31,30,31};
+    int maxDay = daysPerMonth[month];
+    if (month == 2 && ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))) {
+        maxDay = 29;
+    }
+    if (d < 1 || d > maxDay) {
+        throw std::invalid_argument("Day out of range for month");
+    }
+    return d;
+}
+
+void Date::print() const {
+    std::cout << year << "/" << month << "/" << day;
+}
+
+bool Date::isEarlierThan(const Date& other) const {
+    if (year != other.year) return year < other.year;
+    if (month != other.month) return month < other.month;
+    return day < other.day;
+}
+
+int Date::calculateAge(const Date& asOf) const {
+    int age = asOf.year - year;
+    if (asOf.month < month || (asOf.month == month && asOf.day < day)) {
+        age--;
+    }
+    return age;
+}
