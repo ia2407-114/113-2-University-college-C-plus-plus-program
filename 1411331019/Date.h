@@ -1,34 +1,25 @@
-// Fig. 9.4: Time.h
-// Time class containing a constructor with default arguments.
-// Member functions defined in Time.cpp.
-
-// prevent multiple inclusions of header 
 #ifndef DATE_H
 #define DATE_H
 
-// Time class definition
 class Date
 {
 public:
-	explicit Date(int = 0, int = 0, int = 0); // default constructor
+	static const unsigned int monthsPerYear = 12; // months in a year
+	explicit Date(int = 1, int = 1, int = 1900); // default constructor
+	Date& setMonth(int mn); // setter for month
+	Date& setDay(int dy);   // setter for day
+	Date& setYear(int yr);  // setter for year
+	void print() const; // print date in month/day/year format
+	~Date(); // destructor to confirm destruction order
 
-	// set functions
-	void setDate(int, int, int); // set hour, minute, second
-	void setYear(int); // set hour (after validation)
-	void setMonth(int); // set minute (after validation)
-	void setDay(int); // set second (after validation)
-
-	// get functions
-	unsigned int getYear() const; // return hour
-	unsigned int getMonth() const; // return minute
-	unsigned int getDay() const; // return second
-
-	void printUniversal() const; // output time in universal-time format
-	void printStandard() const; // output time in standard-time format
 private:
-	unsigned int year;
-	unsigned int month; // 1-12
-	unsigned int day; // 1-31
-}; // end class Time
+	unsigned int month; // 1-12 (January-December)
+	unsigned int day;   // 1-31 based on month
+	unsigned int year;  // any year
 
-#endif
+	// utility function to check if day is proper for month and year
+	unsigned int checkDay(int testDay) const;
+}; // end class Date
+
+#endif // DATE_H
+#pragma once
