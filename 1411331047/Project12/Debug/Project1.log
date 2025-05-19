@@ -1,0 +1,7 @@
+﻿  Pet.cpp
+D:\47\Project1\Pet.cpp(25,32): error C2678: 二元運算子 '=': 找不到使用左方運算元類型 'const Date' 的運算子 (或是沒有可接受的轉換)
+D:\47\Project1\Date.h(20,1): message : 可能是 'Date &Date::operator =(const Date &)'
+D:\47\Project1\Pet.cpp(25,32): message : 當嘗試符合引數清單 '(const Date, const Date)' 時
+D:\47\Project1\Pet.cpp(31,30): error C2678: 二元運算子 '=': 找不到使用左方運算元類型 'const Date' 的運算子 (或是沒有可接受的轉換)
+D:\47\Project1\Date.h(20,1): message : 可能是 'Date &Date::operator =(const Date &)'
+D:\47\Project1\Pet.cpp(31,30): message : 當嘗試符合引數清單 '(const Date, const Date)' 時
