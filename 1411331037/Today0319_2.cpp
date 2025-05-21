@@ -1,4 +1,4 @@
-﻿// Fig. 3.1: fig03_01.cpp week4
+﻿// Fig. 3.1: fig03_01.cpp week5
 // Define class GradeBook with a member function displayMessage;
 // Create a GradeBook object and call its displayMessage function.
 #include <iostream>
