@@ -1,4 +1,5 @@
-﻿#include <stdio.h>
+//week2
+#include <stdio.h>
 
 struct student {
     unsigned int ID; 
