@@ -1,4 +1,5 @@
-﻿#include <stdio.h>
+//week3
+#include <stdio.h>
 
 // clientData structure definition               
 struct student {
