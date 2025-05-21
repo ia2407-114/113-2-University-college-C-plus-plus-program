@@ -1,0 +1,26 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+    string phoneNumber;  // 儲存手機號碼的字串變數
+
+    // 讓使用者輸入手機號碼
+    cout << "請輸入手機號碼（例如0933205261）: ";
+    cin >> phoneNumber;
+
+    // 檢查輸入的長度是否正確
+    if (phoneNumber.length() == 10) {
+        // 輸出格式化後的手機號碼
+        cout << "格式化後的手機號碼: "
+            << phoneNumber.substr(0, 4) << "-"   // 取前四個字符 (09xx)
+            << phoneNumber.substr(4, 3) << "-"   // 取接下來的三個字符 (xxx)
+            << phoneNumber.substr(7, 3) << endl; // 取最後的三個字符 (xxx)
+    }
+    else {
+        cout << "輸入錯誤，請確認手機號碼長度為10位數。" << endl;
+    }
+
+    return 0;
+}
