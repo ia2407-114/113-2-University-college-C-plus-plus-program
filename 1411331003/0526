@@ -1,0 +1,88 @@
+#include <iostream>
+using namespace std;
+
+class Matrix
+{
+public:
+    int row, column;
+    int** element;
+
+    Matrix(int m, int n)
+    {
+        row = m;
+        column = n;
+        element = new int* [m];
+        for (int i = 0; i < m; i++)
+            element[i] = new int[n];
+    }
+
+    // 一元 ++ 運算子多載
+    Matrix operator++()
+    {
+        for (int i = 0; i < row; i++)
+            for (int j = 0; j < column; j++)
+                element[i][j] += 1;
+        return *this;
+    }
+
+    // 一元 - 運算子多載（負矩陣）
+    Matrix operator-()
+    {
+        Matrix temp(row, column);
+        for (int i = 0; i < row; i++)
+            for (int j = 0; j < column; j++)
+                temp.element[i][j] = -element[i][j];
+        return temp;
+    }
+
+    // 解構子
+    ~Matrix()
+    {
+        for (int i = 0; i < row; i++)
+            delete[] element[i];
+        delete[] element;
+    }
+};
+
+int main()
+{
+    int i, j, row, column;
+    cout << "重新定義「-」前置運算子的多載，求A矩陣的副矩陣(-A)：\n";
+    cout << "輸入矩陣A的列數(row):";
+    cin >> row;
+    cout << "輸入矩陣A的行數(column):";
+    cin >> column;
+    Matrix a(row, column), b(row, column);
+    cout << "輸入一" << row << 'x' << column << "矩陣A" << endl;
+    for (i = 0; i < row; i++)
+        for (j = 0; j < column; j++)
+        {
+            cout << "A[" << i << "][" << j << "]=";
+            cin >> a.element[i][j];
+        }
+    cout << "矩陣A遞增前:\n";
+    for (i = 0; i < row; i++) {
+        for (j = 0; j < column; j++)
+            cout << a.element[i][j] << '\t';
+        cout << endl;
+    }
+
+    ++a; // 一元前置遞增
+
+    cout << "矩陣A遞增後:\n";
+    for (i = 0; i < row; i++) {
+        for (j = 0; j < column; j++)
+            cout << a.element[i][j] << '\t';
+        cout << endl;
+    }
+    b = -a;
+    cout << "矩陣A的負矩陣(-A):\n";
+    for (i = 0; i < row; i++)
+    {
+        for (j = 0; j < column; j++)
+            cout << b.element[i][j] << '\t';
+        cout << endl;
+    }
+
+    return 0;
+}
