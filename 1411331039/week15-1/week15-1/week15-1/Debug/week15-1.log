@@ -1,0 +1,4 @@
+﻿  Source.cpp
+D:\week15-1\week15-1\week15-1\Source.cpp(81,12): warning C4101: 'j': 未參考的區域變數
+D:\week15-1\week15-1\week15-1\Source.cpp(81,9): warning C4101: 'i': 未參考的區域變數
+  week15-1.vcxproj -> D:\week15-1\week15-1\Debug\week15-1.exe
