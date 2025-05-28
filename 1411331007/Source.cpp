@@ -1,24 +1,24 @@
 #include <iostream>
-#include "week15-1matrix.h"
+#include "matrix.h"
 using namespace std;
 
 int main()
 {
     int i, j, row, column;
-    cout << "é‡æ–°å®šç¾©ã€Œ-ã€å‰ç½®é‹ç®—å­çš„å¤šè¼‰ï¼Œæ±‚AçŸ©é™£çš„å‰¯çŸ©é™£(-A)ï¼š\n";
-    cout << "è¼¸å…¥çŸ©é™£Açš„åˆ—æ•¸(row):";
+    cout << "­«·s©w¸q¡u-¡v«e¸m¹Bºâ¤lªº¦h¸ü¡A¨DA¯x°}ªº°Æ¯x°}(-A)¡G\n";
+    cout << "¿é¤J¯x°}Aªº¦C¼Æ(row):";
     cin >> row;
-    cout << "è¼¸å…¥çŸ©é™£Açš„è¡Œæ•¸(column):";
+    cout << "¿é¤J¯x°}Aªº¦æ¼Æ(column):";
     cin >> column;
     Matrix a(row, column), b(row, column);
-    cout << "è¼¸å…¥ä¸€" << row << 'x' << column << "çŸ©é™£A" << endl;
+    cout << "¿é¤J¤@" << row << 'x' << column << "¯x°}A" << endl;
     for (i = 0; i < row; i++)
         for (j = 0; j < column; j++)
         {
             cout << "A[" << i << "][" << j << "]=";
             cin >> a.element[i][j];
         }
-    cout << "çŸ©é™£Açš„åŽŸå§‹çŸ©é™£(A):\n";
+    cout << "¯x°}Aªº­ì©l¯x°}(A):\n";
     for (i = 0; i < row; i++)
     {
         for (j = 0; j < column; j++)
@@ -26,7 +26,7 @@ int main()
         cout << endl;
     }
     b = ++a;
-    cout << "çŸ©é™£Açš„éžå¢žå¾ŒçŸ©é™£(A+1):\n";
+    cout << "¯x°}Aªº»¼¼W«á¯x°}(A+1):\n";
     for (i = 0; i < row; i++)
     {
         for (j = 0; j < column; j++)
