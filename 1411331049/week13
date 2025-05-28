@@ -1,0 +1,90 @@
+#include <iostream>
+using namespace std;
+
+class Matrix {
+public:
+    int row, column;
+    int** element;
+
+    Matrix(int m, int n) {
+        row = m;
+        column = n;
+
+        // Dynamically allocate memory for an m x n 2D array
+        element = new int* [m];
+        for (int i = 0; i < m; i++)
+            element[i] = new int[n];
+    }
+
+    Matrix(char name, int m, int n) {
+        row = m;
+        column = n;
+
+        // Dynamically allocate memory for an m x n 2D array
+        element = new int* [m];
+        for (int i = 0; i < m; i++)
+            element[i] = new int[n];
+
+        cout << "Enter elements for " << m << 'x' << n << " matrix " << name << endl;
+        for (int i = 0; i < m; i++)
+            for (int j = 0; j < n; j++) {
+                cout << name << '[' << i << "][" << j << "] = ";
+                cin >> element[i][j];
+            }
+    }
+
+    // Overload the '+' operator for matrix addition
+    Matrix operator+(Matrix x) {
+        Matrix temp(this->row, this->column);
+        for (int i = 0; i < this->row; i++)
+            for (int j = 0; j < this->column; j++)
+                temp.element[i][j] = this->element[i][j] + x.element[i][j];
+        return temp;
+    }
+
+    // Overload the prefix '++' operator to increment all elements by 1
+    Matrix& operator++() {
+        for (int i = 0; i < row; i++)
+            for (int j = 0; j < column; j++)
+                element[i][j]++;
+        return *this;
+    }
+
+    // Display the matrix with an optional label
+    void display(const char* msg = "") {
+        if (msg[0] != '\0') cout << msg << endl;
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < column; j++)
+                cout << element[i][j] << '\t';
+            cout << endl;
+        }
+    }
+};
+
+int main() {
+    int row, column;
+    cout << "Redefine '+' and '++' operators to work with matrices\n";
+    cout << "Enter the number of rows for matrices A and B: ";
+    cin >> row;
+    cout << "Enter the number of columns for matrices A and B: ";
+    cin >> column;
+
+    Matrix a('A', row, column);
+    Matrix b('B', row, column);
+    Matrix c(row, column);
+
+    // Perform matrix addition
+    c = a + b;
+    c.display("Matrix A + Matrix B =");
+
+    // Display matrix A before increment
+    a.display("Matrix A before increment:");
+
+    // Apply prefix increment to matrix A
+    ++a;
+
+    // Display matrix A after increment
+    a.display("Matrix A after increment:");
+
+    return 0;
+}
