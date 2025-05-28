@@ -1,0 +1,5 @@
+﻿  Source.cpp
+C:\Users\heeer\Desktop\期中考練習\20250528-1\Matrix.h(41,19): warning C4101: 'k': 未參考的區域變數
+C:\Users\heeer\Desktop\期中考練習\20250528-1\Matrix.h(54,19): warning C4101: 'k': 未參考的區域變數
+C:\Users\heeer\Desktop\期中考練習\20250528-1\Matrix.h(67,19): warning C4101: 'k': 未參考的區域變數
+  20250528-1.vcxproj -> C:\Users\heeer\Desktop\期中考練習\20250528-1\Debug\20250528-1.exe
