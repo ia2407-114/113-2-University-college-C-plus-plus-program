@@ -48,6 +48,7 @@ public:
         return temp;
     }
 
+    // 定義矩陣的「-」(減號)運算子的多載
     Matrix operator-(Matrix x)
     {
         int i, j;
@@ -59,6 +60,7 @@ public:
         return temp;
     }
 
+    // 定義矩陣的「*」(乘號)運算子的多載
     Matrix operator^(Matrix x)
     {
         int i, j;
