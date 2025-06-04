@@ -1,0 +1,19 @@
+#include <iostream>
+#include "flight_object.h"
+using namespace std;
+
+int main() {
+    // Create an airliner and a cargo plane
+    Airliner air1;
+    Cargo cargo1;
+
+    // Display the data for the airliner (from FlightObject base class and Airliner subclass)
+    air1.display();
+    air1.display_airliner();
+
+    // Display the data for the cargo plane (from FlightObject base class and Cargo subclass)
+    cargo1.display();
+    cargo1.display_cargo();
+
+    return 0;
+}
