@@ -1,0 +1,6 @@
+﻿  main.cpp
+  square_2D.cpp
+  square_2D.h
+  正在產生程式碼...
+Debug\square_2D.obj : warning LNK4042: 指定物件超過一次，已忽略多餘的部分
+  0604(2).vcxproj -> D:\0604(2)\Debug\0604(2).exe
