@@ -1,0 +1,84 @@
+#include <iostream>
+using namespace std;
+
+// Rectangle class (2D)
+class Square2D {
+protected:
+    double length;  // Length
+    double width;   // Width
+
+public:
+    // Constructor
+    Square2D() {
+        cout << "\nExecuting Square2D constructor" << endl;
+        cout << "Enter length: ";
+        cin >> length;
+        cout << "Enter width: ";
+        cin >> width;
+    }
+
+    // Destructor
+    ~Square2D() {
+        cout << "Executing Square2D destructor" << endl;
+    }
+
+    // Calculate area
+    double compute_area() {
+        return length * width;
+    }
+
+    // Display 2D information
+    void print_2D() {
+        cout << "\nRectangle Information:" << endl;
+        cout << "Length: " << length << endl;
+        cout << "Width: " << width << endl;
+        cout << "Area: " << compute_area() << endl;
+    }
+};
+
+// Rectangular prism class (3D, inherits from Square2D)
+class Rect3D : public Square2D {
+private:
+    double height;  // Height
+
+public:
+    // Constructor
+    Rect3D() : Square2D() {
+        cout << "\nExecuting Rect3D constructor" << endl;
+        cout << "Enter height: ";
+        cin >> height;
+    }
+
+    // Destructor
+    ~Rect3D() {
+        cout << "Executing Rect3D destructor" << endl;
+    }
+
+    // Calculate volume
+    double compute_volume() {
+        return length * width * height;
+    }
+
+    // Display 3D information
+    void print_3D() {
+        cout << "\nRectangular Prism Information:" << endl;
+        cout << "Length: " << length << endl;
+        cout << "Width: " << width << endl;
+        cout << "Height: " << height << endl;
+        cout << "Volume: " << compute_volume() << endl;
+    }
+};
+
+int main() {
+    // Create rectangle object
+    cout << "===== Creating Rectangle =====" << endl;
+    Square2D rectangle;
+    rectangle.print_2D();
+
+    // Create rectangular prism object
+    cout << "\n===== Creating Rectangular Prism =====" << endl;
+    Rect3D prism;
+    prism.print_3D();
+
+    return 0;
+}
