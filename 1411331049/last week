@@ -1,0 +1,45 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+// Base class for circle, stores radius and computes circumference
+class Circ_1D {
+public:
+    double radius;            // Circle radius
+    const double pi = 3.14;   // Constant value of π
+
+    Circ_1D(double r = 0) : radius(r) {} // Constructor with optional radius
+
+    double compute_circ() {             // Calculate circumference
+        return 2 * pi * radius;
+    }
+};
+
+// Cone class (Cron_3D) inherits from Circ_1D
+class Cron_3D : public Circ_1D {
+public:
+    double height;                     // Height of the cone
+
+    Cron_3D(double r = 0, double h = 0) // Constructor: radius and height
+        : Circ_1D(r), height(h) {}
+
+    double compute_volume() {         // Calculate cone volume
+        return (1.0 / 3.0) * pi * radius * radius * height;
+    }
+};
+
+int main() {
+    double r, h; // Declare radius and height
+    cout << "Enter cone radius: ";
+    cin >> r;
+    cout << "Enter cone height: ";
+    cin >> h;
+
+    Cron_3D cone(r, h); // Create a cone object with input
+
+    // Display results
+    cout << "Cone Circumference: " << cone.compute_circ() << endl;
+    cout << "Cone Volume: " << cone.compute_volume() << endl;
+
+    return 0;
+}
