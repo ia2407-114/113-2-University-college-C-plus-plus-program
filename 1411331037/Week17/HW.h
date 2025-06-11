@@ -3,7 +3,7 @@
 using namespace std;
 
 class Circ_1D
-{	
+{
 public:
 	Circ_1D();
 	void compute_circ();
