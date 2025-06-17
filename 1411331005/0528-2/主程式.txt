@@ -1,0 +1,50 @@
+#include <iostream>
+using namespace std;
+#include "matrix.h"
+
+int main()
+{
+    int row, column;
+    cout << "重新定義「+=」、「-=」、「*=」運算子多載，進行矩陣運算\n";
+    cout << "輸入矩陣A及B的列數(row):";
+    cin >> row;
+    cout << "輸入矩陣A及B的行數(column):";
+    cin >> column;
+
+    // 創建矩陣 A 和 B
+    Matrix a('A', row, column);
+    Matrix b('B', row, column);
+    Matrix c(row, column);
+
+    // 顯示原始矩陣 A 和 B
+    cout << "\n矩陣A:\n";
+    a.print();
+    cout << "\n矩陣B:\n";
+    b.print();
+
+    // 矩陣 A *= 矩陣 B (遞乘操作)
+    c = a;  // 複製矩陣 a 給 c
+    cout << "\n矩陣A *= 矩陣B (遞乘操作) 前:\n";
+    c.print();
+    c *= b; // 矩陣 a 進行遞乘運算後，結果儲存在 c 中
+    cout << "矩陣A *= 矩陣B (遞乘操作) 後:\n";
+    c.print();
+
+    // 矩陣 A += 矩陣 B (遞加操作)
+    c = a;  // 重新賦值給 c
+    cout << "\n矩陣A += 矩陣B (遞加操作) 前:\n";
+    c.print();
+    c += b; // 矩陣 a 進行遞加運算後，結果儲存在 c 中
+    cout << "矩陣A += 矩陣B (遞加操作) 後:\n";
+    c.print();
+
+    // 矩陣 A -= 矩陣 B (遞減操作)
+    c = a;  // 重新賦值給 c
+    cout << "\n矩陣A -= 矩陣B (遞減操作) 前:\n";
+    c.print();
+    c -= b; // 矩陣 a 進行遞減運算後，結果儲存在 c 中
+    cout << "矩陣A -= 矩陣B (遞減操作) 後:\n";
+    c.print();
+
+    return 0;
+}
